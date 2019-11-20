@@ -18,7 +18,15 @@ const routes: Routes = [
   {
     path: 'window',
     loadChildren: () => import('./window/window.module').then( m => m.WindowPageModule)
-  }  
+  },   {
+    path: 'records',
+    loadChildren: () => import('./records/records.module').then( m => m.RecordsPageModule)
+  },
+  {
+    path: 'information',
+    loadChildren: () => import('./information/information.module').then( m => m.InformationPageModule)
+  }
+ 
 
 ];
 

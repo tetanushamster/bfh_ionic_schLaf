@@ -22,9 +22,19 @@ export class AppComponent {
       icon: 'book'
     },
     {
+      title: 'Aufzeichnungen',
+      url: '/records',
+      icon: 'stats'
+    },
+    {
       title: 'Schlaffenster',
       url: '/window',
       icon: 'bed'
+    },
+    {
+      title: 'Informationen',
+      url: '/information',
+      icon: 'information-circle-outline'
     }
   ];
 
