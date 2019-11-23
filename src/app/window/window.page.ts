@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./window.page.scss'],
 })
 export class WindowPage implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
