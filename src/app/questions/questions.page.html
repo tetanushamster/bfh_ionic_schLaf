@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      SleepExpert
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-title>Schlaftagebuch</ion-title>
+
+    <ion-grid>
+      <ion-row align-items-start>
+        <ion-col size="2.5"><ion-avatar><img src="assets/img/sheep.png"></ion-avatar></ion-col>
+      </ion-row>
+      <ion-row align-items-start>
+        <ion-col size="8"><ion-button expand="block">Frage 1</ion-button></ion-col>
+      </ion-row>
+      <ion-row justify-content-end>
+        <ion-col size="4" ><ion-button expand="block">Weiter<ion-icon name="arrow-forward"></ion-icon></ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-item *ngFor="let x of qlist">
+        <ion-label>
+        <h2> {{x.quest}} </h2>
+        <div *ngIf="x.answertype == '1'"><ion-range min="0" max="8" step="1" snaps="true" pin="true"></ion-range></div>
+        <div *ngIf="x.answertype == '2'"><ion-datetime display-format="HH:mm" picker-format="HH:mm" done-text="Fertig" cancel-text="Abbrechen"></ion-datetime></div>
+        <div *ngIf="x.answertype == '3'"><ion-datetime display-format="h.mm" picker-format="h.mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,15,30,45" placeholder="0.00"  done-text="Fertig" cancel-text="Abbrechen"></ion-datetime></div>
+        <div *ngIf="x.answertype == '4'"><ion-input placeholder="z.B. Buch lesen, Fernseh geschaut, .."></ion-input></div>
+        <div *ngIf="x.answertype == '5'"><ion-input type="number" placeholder="z.B. 2"></ion-input>mal</div>
+        <div *ngIf="x.answertype == '6'"><ion-button>Nein</ion-button><ion-button>Ja</ion-button></div>
+        <ion-button expand="block" disabled={{x.nextbtn}}>Weiter<ion-icon name="arrow-forward"></ion-icon></ion-button>
+        </ion-label>
+        </ion-item>
+     
+
+</ion-content>

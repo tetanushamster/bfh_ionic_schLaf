@@ -2,6 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
       SleepExpert
@@ -10,4 +11,12 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-title>Schlaftagebuch</ion-title>
+  <ion-text>{{today | date:"EEEE a":de}}<br>{{today | date:"dd.MM.yyyy":de}}</ion-text>
+
+  
+
+  <ion-button expand="block" href="/questions/"><ion-icon slot="start" name="book"></ion-icon>Neuer Tagebucheintrag</ion-button>
+
 </ion-content>
