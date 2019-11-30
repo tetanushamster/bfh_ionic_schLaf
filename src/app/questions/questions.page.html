@@ -26,8 +26,9 @@
     </ion-grid>
 
 
-    <ion-item *ngFor="let x of qlist">
+  <!-- <ion-item *ngFor="let x of qlist; let i = index">
         <ion-label>
+          
         <h2> {{x.quest}} </h2>
         <div *ngIf="x.answertype == '1'"><ion-range min="0" max="8" step="1" snaps="true" pin="true"></ion-range></div>
         <div *ngIf="x.answertype == '2'"><ion-datetime display-format="HH:mm" picker-format="HH:mm" done-text="Fertig" cancel-text="Abbrechen"></ion-datetime></div>
@@ -38,6 +39,20 @@
         <ion-button expand="block" disabled={{x.nextbtn}}>Weiter<ion-icon name="arrow-forward"></ion-icon></ion-button>
         </ion-label>
         </ion-item>
-     
+     -->
+
+     <ion-item>
+       <ion-label>
+         <h2>{{qlist[x].quest}}</h2>
+         <div *ngIf="qlist[x].answertype == '1'"><ion-range min="0" max="8" step="1" snaps="true" pin="true"></ion-range></div>
+        <div *ngIf="qlist[x].answertype == '2'"><ion-datetime display-format="HH:mm" picker-format="HH:mm" done-text="Fertig" cancel-text="Abbrechen"></ion-datetime></div>
+        <div *ngIf="qlist[x].answertype == '3'"><ion-datetime display-format="h.mm" picker-format="h.mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,15,30,45" placeholder="0.00"  done-text="Fertig" cancel-text="Abbrechen"></ion-datetime></div>
+        <div *ngIf="qlist[x].answertype == '4'"><ion-input placeholder="z.B. Buch lesen, Fernseh geschaut, .."></ion-input></div>
+        <div *ngIf="qlist[x].answertype == '5'"><ion-input type="number" placeholder="z.B. 2"></ion-input>mal</div>
+        <div *ngIf="qlist[x].answertype == '6'"><ion-button>Nein</ion-button><ion-button>Ja</ion-button></div>
+        <ion-button expand="block" disabled={{qlist[x].nextbtn}} (click)=btnBack(x)> Zurück<ion-icon name="arrow-backward"></ion-icon></ion-button>
+        <ion-button expand="block" disabled={{qlist[x].nextbtn}} (click)=btnForward(x)> Weiter<ion-icon name="arrow-forward"></ion-icon></ion-button>
+        </ion-label
+        ></ion-item>
 
 </ion-content>

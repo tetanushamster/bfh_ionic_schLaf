@@ -12,18 +12,26 @@ export class QuestionsPage implements OnInit {
   ngOnInit() {
   }
 
-  
+  x=0
+
+  public btnForward(x) {
+    this.x++
+  }
+  public btnBack(x) {
+    this.x--
+  }
+
 
   qlist=[ { quest: 'Guten Morgen! Ich werde Ihnen nun einige Fragen stellen, um einen neuen Tagebucheintrag zu erfassen.',
             answertype: '0',
             nextbtn: false},
-          { quest: 'Wie war die Schlafqualität?</br>(1=sehr gut / 8=sehr schlecht)',
+          { quest: 'Wie war die Schlafqualität? </br> (1=sehr gut / 8=sehr schlecht)',
             answertype: '1',
             nextbtn: false},
-          { quest: 'Wie ist Ihr Gefühl des Erholtseins?</br>(1=sehr gut / 8=sehr schlecht)',
+          { quest: 'Wie ist Ihr Gefühl des Erholtseins? </br> (1=sehr gut / 8=sehr schlecht)',
             answertype: '1',
             nextbtn: false},
-            { quest: 'Wie war Ihre Müdigkeit beim Zubettgehen?</br>(1=keine Müdigkeit / 8=starke Müdikgeit)',
+            { quest: 'Wie war Ihre Müdigkeit beim Zubettgehen? </br> (1=keine Müdigkeit / 8=starke Müdikgeit)',
             answertype: '1',
             nextbtn: false},
             { quest: 'Wann sind Sie zu Bett gegangen?',
