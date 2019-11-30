@@ -10,5 +10,22 @@
 </ion-header>
 
 <ion-content>
-
+  <h1>Informationen</h1>
+  <ion-item>
+    <ion-label position="floating">Dein Name </ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-button (click)="openNextTab()">Sag Hallo!</ion-button>
+  <ion-button expand="block">Therapiemöglichkeiten</ion-button>
+  <ion-button expand="block">Schlafkrankheit</ion-button>
+  <ion-button expand="block">Schlafhygiene</ion-button>
+  <ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Subtitle</ion-card-subtitle>
+    <ion-card-title>Card Title</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Some Content...
+  </ion-card-content>
+</ion-card>
 </ion-content>
