@@ -19,30 +19,16 @@
       <ion-back-button defaultHref="home">
 
       </ion-back-button> Zurück
-    </ion-buttons>
-  </ion-toolbar>
-
-
-
-  <ion-card>
+    </ion-buttons></ion-toolbar>
+    <ion-card>
     <ion-card-header>
-
-
-
-      <ion-card-title>
-        Schlaffenster bestimmen
-      </ion-card-title>
-    </ion-card-header>
-
+      <ion-card-title> Schlaffenster bestimmen </ion-card-title>
+    </ion-card-header>    
     <ion-item>
       <ion-avatar slot="start">
         <img src="assets/img/sheep.png">
       </ion-avatar>
-
-    </ion-item>
-
-
-    <ion-item>
+    
       <ion-label class="ion-text-wrap">
         Wann möchten Sie morgen aufstehen?
       </ion-label>
@@ -52,7 +38,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-
+          <!-- emply space -> Time to the right of the window -->
         </ion-col>
 
 
@@ -60,18 +46,23 @@
           <ion-label>HH:mm</ion-label>
           <ion-datetime displayFormat="HH:mm"></ion-datetime>
         </ion-item>
-
-
       </ion-row>
-
-
     </ion-grid>
 
+    <div magin-vertical text-right>
+      <!-- @ margin-verical text-right := makes the items be on the 
+      right side of the page-->
 
-    <div margin-vertical text-right>
+      <ion-button href="/window/que1/" fill="outline" color="#c3dcfb">
+        <!-- Add icon to the button
+          @slot start:= positions the icon in front of the name -->
+        <ion-icon slot="start" name="arrow-forward"></ion-icon>
+        <!-- name of button-->
+        Weiter
 
-      <ion-button fill="outline" color="#c3dcfb">Weiter</ion-button>
+      </ion-button>
     </div>
+
 
 
     <!--Progeress bar: just for estetics and ffun-->
@@ -80,6 +71,6 @@
 
   </ion-card>
 
-
+  <!-- make the radio buttons or a toggle button-->
 
 </ion-content>
