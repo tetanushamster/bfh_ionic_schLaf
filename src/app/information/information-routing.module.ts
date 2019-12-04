@@ -7,7 +7,19 @@ const routes: Routes = [
   {
     path: '',
     component: InformationPage
+  },  {
+    path: 'therapie',
+    loadChildren: () => import('./therapie/therapie.module').then( m => m.TherapiePageModule)
+  },
+  {
+    path: 'schlafkrankheit',
+    loadChildren: () => import('./schlafkrankheit/schlafkrankheit.module').then( m => m.SchlafkrankheitPageModule)
+  },
+  {
+    path: 'schlafhygene',
+    loadChildren: () => import('./schlafhygene/schlafhygene.module').then( m => m.SchlafhygenePageModule)
   }
+
 ];
 
 @NgModule({
