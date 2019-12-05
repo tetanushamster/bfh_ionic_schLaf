@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de-CH';
@@ -20,7 +21,8 @@ registerLocaleData(localeDe, 'de');
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
