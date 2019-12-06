@@ -11,8 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 /** Import needed after the firebase connection */
 import {AngularFireModule } from '@angular/fire';
+/** in enviroment is the "code" for fire */
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,7 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
     AppRoutingModule,
     /** add AngularFireModule.initilaizeApp to the NGModule */
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     /** AngularFirestoreModule: so you can use the firestore database */
     AngularFirestoreModule
   ],

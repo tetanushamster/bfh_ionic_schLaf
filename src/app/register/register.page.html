@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+       <ion-avatar slot="start">
+        <img src="assets/img/sheep.png">
+      </ion-avatar>
+      <ion-title>SleepExpert</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title> Bitte registrieren Sie sich </ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Benutzername</ion-label>
+          <ion-input type="text" [(ngModel)]="userID"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating"> Kennwort</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+          <!-- @type password := this hides the text and it makes it 
+        appear as if its *** -->
+        </ion-item>
+                <ion-item>
+            <ion-label position="floating"> Kennwort bestätige
+              
+            </ion-label>
+            <ion-input type="password" [(ngModel)]="cpassword"></ion-input>
+        </ion-item>
+      </ion-list>
+      
+      <div magin-vertical text-center> 
+      <!-- access button-->
+      <ion-button (click) = "register()">
+        <ion-icon slot="start" name="log-in"></ion-icon>
+        Einloggen
+      </ion-button>
+    </div>
+    <br>
+    </ion-card>
+  
+  </ion-content>
