@@ -10,25 +10,25 @@ import { environment } from 'src/environments/environment';
 export class LoginPage implements OnInit {
 
   /** vars for the Authentification of the user */
-  userID: string ='';
-  password: string = "";
-  
+  userID = '';
+  password = '';
+
   constructor(public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
   }
 
-  async login(){
+  async login() {
     const { userID, password } = this;
     try {
       const res = await this.afAuth.auth.signInWithEmailAndPassword(userID + '@yahoo.com', password);
-    } catch (err){
+    } catch (err) {
       console.dir(err);
-      if (err.code == "auth/user-not-found"){
-        console.log ("User not found");
+      if (err.code === 'auth/user-not-found') {
+        console.log ('User not found');
       }
-      if (err.code == "auth/invalid-email"){
-        console.log ("Invalid email");
+      if (err.code === 'auth/invalid-email') {
+        console.log ('Invalid email');
       }
     }
   }
