@@ -4,8 +4,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'register',
+    redirectTo: 'choice-login',
     pathMatch: 'full'
+  },
+  {
+    path: 'choice-login',
+    loadChildren: () => import('./choice-login/choice-login.module').then( m => m.ChoiceLoginPageModule)
   },
   {
     path: 'register',
@@ -34,6 +38,7 @@ const routes: Routes = [
     path: 'information',
     loadChildren: () => import('./information/information.module').then( m => m.InformationPageModule)
   }
+
 
 
 ];

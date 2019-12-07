@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+// new added 2 lines
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +50,9 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+     this.platform.ready().then(() => {
+       //new added
+      AngularFireModule.initializeApp(environment.firebase);
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

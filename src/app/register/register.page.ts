@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { environment } from './../../environments/environment';
 
 
 
@@ -37,7 +37,7 @@ export class RegisterPage implements OnInit {
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(userID + '@yahoo.com', password);
       console.log(res);
       this.showAlert('Eingeloggt', ' ');
-      /** redirect to pages */
+      /** redirect to home page */
       this.router.navigate(['/home']);
     } catch (error) {
       console.dir(error);

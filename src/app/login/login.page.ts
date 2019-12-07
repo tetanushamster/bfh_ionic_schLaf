@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { environment } from 'src/environments/environment';
 
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,7 +14,8 @@ export class LoginPage implements OnInit {
   userID = '';
   password = '';
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth,
+              public router: Router) { }
 
   ngOnInit() {
   }
@@ -21,7 +23,10 @@ export class LoginPage implements OnInit {
   async login() {
     const { userID, password } = this;
     try {
-      const res = await this.afAuth.auth.signInWithEmailAndPassword(userID + '@yahoo.com', password);
+      const res = await this.afAuth.auth.signInWithEmailAndPassword(userID + '@yahoo.com', password)
+      .then(data => {
+        this.router.navigate(['/home']);
+      });
     } catch (err) {
       console.dir(err);
       if (err.code === 'auth/user-not-found') {
