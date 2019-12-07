@@ -25,7 +25,12 @@ const routes: Routes = [
   {
     path: 'information',
     loadChildren: () => import('./information/information.module').then( m => m.InformationPageModule)
+  },
+  {
+    path: 'withings',
+    loadChildren: () => import('./withings/withings.module').then( m => m.WithingsPageModule)
   }
+
  
 
 ];
