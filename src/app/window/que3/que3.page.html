@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      SleepExpert
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+
+  <!--back button-->
+
+  <ion-toolbar>
+    <ion-buttons slot="start" position="left">
+      <ion-back-button defaultHref="home">
+
+      </ion-back-button> Zurück
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Schlaffenster bestimmen
+      </ion-card-title>
+    </ion-card-header>
+
+
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="1">
+    
+  </ion-col>
+  <ion-col>
+    <ion-item>
+       
+      <ion-label class="ion-text-wrap">
+        Wann möchten Sie morgen aufstehen?
+      </ion-label>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+
+      <ion-col>
+        <!-- emply space -> Time to the right of the window -->
+      </ion-col>
+
+
+      <ion-item>
+        <ion-label>HH:mm</ion-label>
+        <ion-datetime displayFormat="HH:mm"></ion-datetime>
+      </ion-item></ion-row>
+  
+      <ion-row>
+        <ion-col size="1">
+      </ion-col> 
+      <ion-col>
+        <ion-item> 
+          <ion-label class="ion-text-wrap">
+            Wann gehen Sie normalerweise ins Bett, um dieses Zeit aufzustehen?
+          </ion-label>
+        </ion-item>          
+      </ion-col>
+      <ion-col>
+        <!-- emply space -> Time to the right of the window -->
+      </ion-col>
+
+
+      <ion-item>
+        <ion-label>HH:mm</ion-label>
+        <ion-datetime displayFormat="HH:mm"></ion-datetime>
+      </ion-item>    
+      </ion-row>
+      
+</ion-grid>
+    
+
+    
+
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="assets/img/sheep.png">
+          </ion-avatar>
+    
+           
+        </ion-item>  
+       
+          
+          
+    <div magin-vertical text-right>
+      <!-- @ margin-verical text-right := makes the items be on the 
+      right side of the page-->
+
+      <ion-button href="/window/que4/" fill="outline" color="#c3dcfb">
+        <!-- Add icon to the button
+          @slot start:= positions the icon in front of the name -->
+        <ion-icon slot="start" name="arrow-forward"></ion-icon>
+        <!-- name of button-->
+        Weiter
+
+      </ion-button>
+    </div>
+
+
+
+    <!--Progeress bar: just for estetics and ffun-->
+    <ion-progress-bar color="secondary" value="0.4"></ion-progress-bar>
+
+
+  </ion-card>
+
+  <!-- make the radio buttons or a toggle button-->
+
+</ion-content>

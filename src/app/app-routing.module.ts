@@ -4,8 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'choice-login',
     pathMatch: 'full'
+  },
+  {
+    path: 'choice-login',
+    loadChildren: () => import('./choice-login/choice-login.module').then( m => m.ChoiceLoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'home',
@@ -31,7 +43,11 @@ const routes: Routes = [
     loadChildren: () => import('./withings/withings.module').then( m => m.WithingsPageModule)
   }
 
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> origin/master
 
 ];
 

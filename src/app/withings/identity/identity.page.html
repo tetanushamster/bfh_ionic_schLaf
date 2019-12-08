@@ -12,10 +12,10 @@
   <ion-content>
         <h1 *ngIf="!name">
                 Hallo
-            </h1>
-            <h1 *ngIf="name">
+        </h1>
+        <h1 *ngIf="name">
                 Hallo, {{name}}
-            </h1>
+        </h1>
   
       <button class="btn btn-default" (click)="login()">
           Login
@@ -26,4 +26,9 @@
       <button class="btn btn-default" (click)="debug()">
           DEBUG
       </button>
+
+      <li *ngFor="let product of sleepSummaryObservable | async" >
+          -- id: {{product}}
+      </li>
+
   </ion-content>
