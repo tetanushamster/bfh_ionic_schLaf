@@ -8,13 +8,25 @@ import { IdentityPageRoutingModule } from './identity-routing.module';
 
 import { IdentityPage } from './identity.page';
 
+import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule } from 'angular-oauth2-oidc';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IdentityPageRoutingModule
-  ],
+    IdentityPageRoutingModule,
+
+
+    HttpClientModule,
+    OAuthModule.forRoot({
+      resourceServer: {
+              allowedUrls: ['https://sleepexpert.voxte.ch/'],
+              sendAccessToken: true
+              }
+            })],
+
   declarations: [IdentityPage]
 })
 export class IdentityPageModule {}

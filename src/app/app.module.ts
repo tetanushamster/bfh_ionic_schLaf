@@ -20,8 +20,12 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    OAuthModule.forRoot()
-  ],
+    OAuthModule.forRoot({
+      resourceServer: {
+              allowedUrls: ['https://sleepexpert.voxte.ch/withings/identity'],
+              sendAccessToken: true
+              }
+            })],
   providers: [
     StatusBar,
     SplashScreen,
