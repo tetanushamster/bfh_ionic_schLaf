@@ -9,18 +9,36 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+/** Import needed after the firebase connection */
+import {AngularFireModule } from '@angular/fire';
+/** in enviroment is the "code" for fire */
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
+
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    /** add AngularFireModule.initilaizeApp to the NGModule */
+    AngularFireModule.initializeApp(environment.firebase, 'bhf_ionic_schlaf'),
+    AngularFireAuthModule,
+    /** AngularFirestoreModule: so you can use the firestore database */
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    /** Write: provide: FirestoreSettingsToken if you get a compile error */
+    { provide: FirestoreSettingsToken, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })
