@@ -41,16 +41,9 @@ const routes: Routes = [
   {
     path: 'withings',
     loadChildren: () => import('./withings/withings.module').then( m => m.WithingsPageModule)
-  }
+  }];
 
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> origin/master
-
-];
-
+  
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
