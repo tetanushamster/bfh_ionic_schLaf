@@ -6,7 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./window.page.scss']
 })
 export class WindowPage implements OnInit {
-  constructor( ) { }
+  aufstehen = new Date().toDateString();
+  
+  constructor( ) {
+    
+  }
+  dateChanged(date) {
+    /** asta face sa ai expus in consola data si ora selectata, ceva tre
+     * modificat, dar inca nu stiu ce aume
+     */
+    console.log(this.aufstehen);
+  }
 
   ngOnInit() {
   }}

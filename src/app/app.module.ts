@@ -16,15 +16,19 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+
+
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     /** add AngularFireModule.initilaizeApp to the NGModule */
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'bhf_ionic_schlaf'),
     AngularFireAuthModule,
     /** AngularFirestoreModule: so you can use the firestore database */
     AngularFirestoreModule

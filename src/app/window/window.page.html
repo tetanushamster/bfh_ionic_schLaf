@@ -44,16 +44,17 @@
 
 
         <ion-item>
-          <ion-label>HH:mm</ion-label>
-          <ion-datetime displayFormat="HH:mm"></ion-datetime>
+          <ion-label position="floating">HH:mm</ion-label>
+          <ion-datetime displayFormat="HH:mm" [(ngModel)]="aufstehen" (ionChange) ="dateChanged($event)"></ion-datetime>
         </ion-item>
       </ion-row>
     </ion-grid>
 
-    <div magin-vertical text-right>
-      <!-- @ margin-verical text-right := makes the items be on the 
+    <div class="ion-text-right">
+      <!-- @  text-right := makes the items be on the 
       right side of the page-->
 
+      <!-- href="/window/que1/" -->
       <ion-button href="/window/que1/" color = "primary">
         <!-- Add icon to the button
           @slot start:= positions the icon in front of the name -->

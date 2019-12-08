@@ -51,7 +51,7 @@ export class AppComponent {
 
   initializeApp() {
      this.platform.ready().then(() => {
-       //new added
+       /**new added*/
       AngularFireModule.initializeApp(environment.firebase);
       this.statusBar.styleDefault();
       this.splashScreen.hide();
