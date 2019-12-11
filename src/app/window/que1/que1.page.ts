@@ -62,7 +62,7 @@ bettzeit = new Date('hh:mm').toDateString();
   }
   //display data on screen for the user
 getHourAndMinute(){
-  return "22:23"; 
+  return "10:00"; 
 }
   ngOnInit() {
 
