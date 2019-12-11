@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { AuthenticationService } from '../services/authentication.service';
-
-=======
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
->>>>>>> origin/master
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -16,17 +11,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-<<<<<<< HEAD
-  constructor(private authService: AuthenticationService)  { }
-
-  ngOnInit() {
-  
-  }
-  login() {
-    this.authService.login();
-  }
-
-=======
   /** vars for the Authentification of the user */
   userID = '';
   password = '';
@@ -69,5 +53,4 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
->>>>>>> origin/master
 }
