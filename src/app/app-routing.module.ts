@@ -5,10 +5,26 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+<<<<<<< HEAD
     redirectTo: 'login',
+=======
+    redirectTo: 'choice-login',
+>>>>>>> origin/master
     pathMatch: 'full'
   },
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)},
+  {
+    path: 'choice-login',
+    loadChildren: () => import('./choice-login/choice-login.module').then( m => m.ChoiceLoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
   {
     path: 'home',
     canActivate: [AuthGuard],
@@ -34,6 +50,7 @@ const routes: Routes = [
     loadChildren: () => import('./information/information.module').then( m => m.InformationPageModule)
   },
   {
+<<<<<<< HEAD
     path: 'questions',
     //canActivate: [AuthGuard],
     loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
@@ -45,7 +62,13 @@ const routes: Routes = [
  
 
 ];
+=======
+    path: 'withings',
+    loadChildren: () => import('./withings/withings.module').then( m => m.WithingsPageModule)
+  }];
+>>>>>>> origin/master
 
+  
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
