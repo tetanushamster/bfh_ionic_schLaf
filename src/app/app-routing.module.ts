@@ -30,7 +30,9 @@ const routes: Routes = [
   {
     path: 'window',
     loadChildren: () => import('./window/window.module').then( m => m.WindowPageModule)
-  },   {
+  },
+
+   {
     path: 'records',
     loadChildren: () => import('./records/records.module').then( m => m.RecordsPageModule)
   },
@@ -43,7 +45,7 @@ const routes: Routes = [
     loadChildren: () => import('./withings/withings.module').then( m => m.WithingsPageModule)
   }];
 
-  
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

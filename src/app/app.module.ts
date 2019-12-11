@@ -11,13 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
-/** Import needed after the firebase connection */
+
 import {AngularFireModule } from '@angular/fire';
+
 /** in enviroment is the "code" for fire */
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
 
 
 
