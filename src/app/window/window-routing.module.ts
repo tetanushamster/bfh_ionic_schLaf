@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WindowPage } from './window.page';
 
+
 const routes: Routes = [
   {
     path: '',
     component: WindowPage
-  },  {
+  },
+  {
     path: 'que1',
     loadChildren: () => import('./que1/que1.module').then( m => m.Que1PageModule)
   },

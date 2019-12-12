@@ -44,9 +44,23 @@
 
 
         <ion-item>
-          <ion-label position="floating">HH:mm</ion-label>
-          <ion-datetime displayFormat="HH:mm" [(ngModel)]="aufstehen" (ionChange) ="dateChanged($event)"></ion-datetime>
+          
+          <ion-label id="wakeUp"  
+          position="floating">HH:mm</ion-label>
+         
+          <ion-datetime 
+          displayFormat="HH:mm" 
+          [(ngModel)]="aufstehen" 
+          (ionChange) ="dateChanged($event)" ></ion-datetime>
+
+         
+         
+
+           
+            
         </ion-item>
+        
+         
       </ion-row>
     </ion-grid>
 
@@ -55,7 +69,7 @@
       right side of the page-->
 
       <!-- href="/window/que1/" -->
-      <ion-button href="/window/que1/" color = "primary">
+      <ion-button  href="/window/que1/" color = "primary">
         <!-- Add icon to the button
           @slot start:= positions the icon in front of the name -->
         <ion-icon slot="start" name="arrow-forward"></ion-icon>

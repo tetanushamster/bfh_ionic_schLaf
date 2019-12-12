@@ -38,7 +38,9 @@ const routes: Routes = [
     path: 'window',
     //canActivate: [AuthGuard],
     loadChildren: () => import('./window/window.module').then( m => m.WindowPageModule)
-  },   {
+  },
+
+   {
     path: 'records',
     //canActivate: [AuthGuard],
     loadChildren: () => import('./records/records.module').then( m => m.RecordsPageModule)
@@ -53,7 +55,7 @@ const routes: Routes = [
     loadChildren: () => import('./withings/withings.module').then( m => m.WithingsPageModule)
   }];
 
-  
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
