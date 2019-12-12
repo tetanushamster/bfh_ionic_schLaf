@@ -49,10 +49,14 @@
         <!-- emply space -> Time to the right of the window -->
       </ion-col>
 
-
-      <ion-item>
-        <ion-label>HH:mm</ion-label>
-        <ion-datetime displayFormat="HH:mm"></ion-datetime>
+      
+      <ion-item >
+        <ion-label 
+        id = "wakeUp"
+        position="floating">HH:mm</ion-label>
+        <ion-datetime 
+        displayFormat="HH:mm"  
+        value="{{getHourAndMinute()}}"></ion-datetime>
       </ion-item></ion-row>
   
 </ion-grid>
@@ -66,7 +70,7 @@
           </ion-avatar>
     
           <ion-label class="ion-text-wrap">
-            Wann gehen Sie normalerweise ins Bett, um dieses Zeit aufzustehen?
+            Wann gehen Sie ins Bett, damit Sie zu dieser Zeit aufstehen können?
           </ion-label>
         </ion-item>  
         
@@ -78,8 +82,10 @@
   
   
           <ion-item>
-            <ion-label>HH:mm</ion-label>
-            <ion-datetime displayFormat="HH:mm"></ion-datetime>
+            <ion-label position="floating">HH:mm</ion-label>
+            <ion-datetime displayFormat="HH:mm"
+            [(ngModel)]="bettzeit" 
+          (ionChange) ="bedtimeChanged($event)" >></ion-datetime>
           </ion-item></ion-row></ion-grid>
           
           
