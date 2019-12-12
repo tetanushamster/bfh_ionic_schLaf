@@ -29,7 +29,7 @@ export const authConfig: AuthConfig = {
 export class IdentityPage implements OnInit {
 
   authentication_code : string;
-  private sleepSummaryObservable : Observable<any> ; 
+  private sleepSummaryObservable: Observable<any> ;
 
   constructor(private oauthService: OAuthService, private route: ActivatedRoute, private http: HttpClient) {
     this.oauthService.configure(authConfig);
@@ -84,6 +84,14 @@ public debug() {
     console.log("IS VALID ? : " + this.oauthService.hasValidAccessToken())
     //this.sleepSummaryObservable = 
     //console.log(this.sleepSummaryObservable)
+}
+
+public hasValidAccessTokenAsText() {
+  if (this.oauthService.hasValidAccessToken()) {
+    return 'Erfolgreich mit Withings verbunden.'; }
+  else {
+      return 'Kein gültiges Withings Login erkannt.';
+    }
 }
 
 public get name() {

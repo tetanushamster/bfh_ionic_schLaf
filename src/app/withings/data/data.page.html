@@ -13,9 +13,12 @@
     <button class="btn btn-default" (click)="debug()">
         debug
     </button>
-    <ion-list>
-      <ion-item *ngFor="let item of WithingsData">{{ item }}</ion-item>
-    </ion-list>
+    <div *ngIf="sleepSummaryObservable">
+        <ion-list>
+            <ion-item *ngFor="let item of sleepSummaryObservable">ID: {{ item.id }}, DSL: {{ item.data.deepsleepduration }} / LSL:  {{ item.data.lightsleepduration }} / WAC  {{ item.data.wakeupcount }} </ion-item>
+          </ion-list>
+    </div>
+
 
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
@@ -23,4 +26,11 @@
       loadingText="Loading more data...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
+
+  <ion-toolbar>
+      <ion-buttons slot="start" position="left">
+        <ion-back-button defaultHref="/withings">
+        </ion-back-button> Zurück
+      </ion-buttons>
+  </ion-toolbar>
   </ion-content>
