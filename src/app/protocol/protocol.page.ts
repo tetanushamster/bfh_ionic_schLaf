@@ -11,5 +11,5 @@ export class ProtocolPage implements OnInit {
 
   ngOnInit() {
   }
-
+  today = Date.now();
 }
