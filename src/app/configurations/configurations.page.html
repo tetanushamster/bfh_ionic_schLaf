@@ -29,12 +29,19 @@
       </ion-card-title>
     </ion-card-header>
     <ion-item>
+      <ion-label class="ion-text-wrap">
+       Vom Patienten definierte Schlafdauer: h
+     </ion-label>
+   </ion-item>
+    <ion-item>
        <ion-label class="ion-text-wrap">
-        War der Patienten schlaff erholsam?
+        Empfand der Patient den Schlaf als erholsam?
       </ion-label>
     </ion-item>
   
+     
   <ion-radio-group 
+  value = "{{gutgeschlafen}}"
  > <!-- [(ngModel)]="gutgeschlafen"
   (ionChange) ="restChanged($event)" -->
     
@@ -52,6 +59,7 @@
         
       </ion-item>
   </ion-radio-group>
+ 
     <ion-item>
       <ion-label class="ion-text-wrap">
        Wie viele Stunden sollte der Patient schlafen?
@@ -80,7 +88,7 @@
       <!-- @ margin-verical text-right := makes the items be on the 
       right side of the page-->
 
-      <ion-button href="/window/que2/" color ="primary">
+      <ion-button   color ="primary">
         <!-- Add icon to the button
           @slot start:= positions the icon in front of the name -->
         <ion-icon slot="start" name="arrow-forward"></ion-icon>
@@ -93,7 +101,7 @@
 
 
     <!--Progeress bar: just for estetics and ffun-->
-    <ion-progress-bar color="secondary" value="0.2"></ion-progress-bar>
+    <ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
 
 
 
