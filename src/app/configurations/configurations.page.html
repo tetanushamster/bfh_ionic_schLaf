@@ -33,6 +33,25 @@
         War der Patienten schlaff erholsam?
       </ion-label>
     </ion-item>
+  
+  <ion-radio-group 
+ > <!-- [(ngModel)]="gutgeschlafen"
+  (ionChange) ="restChanged($event)" -->
+    
+     <ion-item>
+      <ion-label>Ja</ion-label><ion-icon name="happy"></ion-icon>
+      <ion-radio 
+      id = "ja"
+      value="ja"></ion-radio>
+      <ion-item>   </ion-item>
+    <ion-label></ion-label><ion-label></ion-label>
+        <ion-label>Nein</ion-label><ion-icon name="sad"></ion-icon>
+        <ion-radio 
+        id = "nein"
+        value="nein"></ion-radio>
+        
+      </ion-item>
+  </ion-radio-group>
     <ion-item>
       <ion-label class="ion-text-wrap">
        Wie viele Stunden sollte der Patient schlafen?

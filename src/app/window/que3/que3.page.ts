@@ -38,11 +38,10 @@ export class Que3Page implements OnInit {
   recomandation = '';
   sleepingWindow;
   difference = 0;
-  sheeptext = "THIS IS JUST THE INITIAL TEXT";
   sugestion: any;
   
   constructor() {
-    this.sheeptext = this.getBestTimeToFallAsleep();
+   // this.sheeptext = this.getBestTimeToFallAsleep();
     // get data from DB AND display on new page for user 2 see
     wakeUp.get().then(doc =>  {
       if (doc.exists) {
