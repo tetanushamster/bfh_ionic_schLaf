@@ -10,8 +10,7 @@ const db = firebase.firestore();
 const wakeUp = db.collection('SleepExpert').doc('aufstehen');
 const sleep = db.collection('SleepExpert').doc('bettzeit');
 const gutgeschlafen = db.collection('SleepExpert').doc('gutgeschlafen');
-const schlaffenster = 8;
-const sheeptext = "FUCK";
+const sheepSugestion = db.collection('SleepExpert').doc('sleepingWindow');
 
 @Component({
   selector: 'app-que3',
@@ -40,6 +39,7 @@ export class Que3Page implements OnInit {
   sleepingWindow;
   difference = 0;
   sheeptext = "THIS IS JUST THE INITIAL TEXT";
+  sugestion: any;
   
   constructor() {
     this.sheeptext = this.getBestTimeToFallAsleep();
@@ -97,6 +97,25 @@ export class Que3Page implements OnInit {
           }).catch(function(error) {
            console.log('Error getting document:', error);
           });
+          
+          // tslint:disable-next-line: align
+          sheepSugestion.get().then(doc =>  {
+            if (doc.exists) {
+              console.log('Sleep Sugestion:', doc.data());
+              const data = doc.data();
+              this.sugestion = data.hour;
+             //added this in front
+              // tslint:disable-next-line: whitespace
+              this.sleepingWindow = parseInt(this.sugestion,10);
+                 
+              console.log('TIME Desired to wake up' + data.hour);
+             } else {
+                  // doc.data() will be undefined in this case
+                  console.log('No such document!');
+              }
+            }).catch(function(error) {
+             console.log('Error getting document:', error);
+            });
                     
   }
 
@@ -141,8 +160,8 @@ export class Que3Page implements OnInit {
     getBestTimeToFallAsleep(){ 
       //parent.document.getElementById("sheepConclusionText")
       this.getRecomandation(); 
-      this.sleepingWindow = 8;
-      this.difference = this.timeInBedSelected - this.sleepingWindow
+     // this.sleepingWindow;
+      this.difference = this.timeInBedSelected - this.sleepingWindow;
       switch(true){
         case (this.difference == 0):
           this.timeInBedSelected = this.sleepingWindow;
