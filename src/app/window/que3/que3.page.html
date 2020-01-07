@@ -60,7 +60,10 @@
         position="floating">HH:mm</ion-label>
         <ion-datetime 
         displayFormat="HH:mm"
-        value="{{getHourAndMinute()}}"></ion-datetime>
+        value="{{getHourAndMinute()}}"
+        [(ngModel)]="aufstehen" 
+          (ionChange) ="dateChanged($event)" 
+        ></ion-datetime>
       </ion-item></ion-row></ion-grid>
     
 
@@ -126,8 +129,8 @@
      <ion-item> 
       <ion-avatar slot="start"><img src="assets/img/sheep.png"></ion-avatar> 
       
-     <ion-label class="ion-text-wrap">
-       Um erholsam zu schlafen, sollten Sie heute um  {{getRecomandation()}} Uhr zu Bett gehen.
+     <ion-label id="sheepConclusionText" class="ion-text-wrap">
+    {{getBestTimeToFallAsleep()}}
      </ion-label>
      </ion-item>
            

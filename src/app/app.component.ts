@@ -41,6 +41,16 @@ export class AppComponent {
       title: 'Informationen',
       url: '/information',
       icon: 'information-circle-outline'
+    },
+    {
+      title: 'Sensor',
+      url: '/withings',
+      icon: 'wifi'
+    },
+    {
+      title: 'Configurations',
+      url: '/configurations',
+      icon: 'construct'
     }
   ]; 
 

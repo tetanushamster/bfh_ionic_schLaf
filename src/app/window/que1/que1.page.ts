@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 // initialize cloud firestore
 const db = firebase.firestore();
 
-// get data from firebase
+// get data to firebase
 const wakeUp = db.collection("SleepExpert").doc("aufstehen");
 
 

@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      SleepExpert
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <br>
+
+  <!--back button-->
+
+  <ion-toolbar>
+    <ion-buttons slot="start" position="left">
+      <ion-back-button defaultHref="home">
+
+      </ion-back-button> Zurück
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Schlaffenster konfigurieren
+      </ion-card-title>
+    </ion-card-header>
+    <ion-item>
+       <ion-label class="ion-text-wrap">
+        War der Patienten schlaff erholsam?
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+       Wie viele Stunden sollte der Patient schlafen?
+     </ion-label>
+   </ion-item>
+   <ion-grid> <ion-row>
+    <!-- 4th row response row-->
+    <ion-col>
+      <!-- emply space -> Time to the right of the window -->
+    </ion-col>
+
+  
+    <ion-item>
+      <ion-label id= "sleepingWindow"
+      position="floating">Stunden </ion-label>
+      <ion-datetime  
+       [(ngModel)]="sleepingWindowInput" 
+        (ionChange) ="dateChanged($event)"
+       dayValues=" 1, 2, 3, 4, 5, 6, 8, 9,10" 
+       displayFormat="h"></ion-datetime>
+    </ion-item>
+     </ion-row></ion-grid>
+          
+          
+    <div magin-vertical text-right>
+      <!-- @ margin-verical text-right := makes the items be on the 
+      right side of the page-->
+
+      <ion-button href="/window/que2/" color ="primary">
+        <!-- Add icon to the button
+          @slot start:= positions the icon in front of the name -->
+        <ion-icon slot="start" name="arrow-forward"></ion-icon>
+        <!-- name of button-->
+        Weiter
+
+      </ion-button>
+    </div>
+
+
+
+    <!--Progeress bar: just for estetics and ffun-->
+    <ion-progress-bar color="secondary" value="0.2"></ion-progress-bar>
+
+
+
+  </ion-card>
+
+  <!-- make the radio buttons or a toggle button-->
+
+</ion-content>
+
+ 
