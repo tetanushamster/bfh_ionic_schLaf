@@ -30,6 +30,7 @@ export class Que3Page implements OnInit {
   datumM = '';
   datumBedH = '';
   datumBedInteger;
+  division;
   datumBedM = '';
   resultRecomandation; 
   recomandation = '';
@@ -103,6 +104,12 @@ export class Que3Page implements OnInit {
 
     // calculating recomended bedtime
     getRecomandation() {
+      if (this.datumBedInteger > this.datumInteger){
+        this.division = 24 - this.datumBedInteger;
+        return this.division;
+      }else {
+        
+      }
       this.resultRecomandation =  this.datumBedInteger - this.datumInteger;
       if ( this.resultRecomandation >= schlaffenster){
         console.log ('sleep duration is ok');
