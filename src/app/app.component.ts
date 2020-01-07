@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  
+  
   public appPages = [
     {
       title: 'Home',

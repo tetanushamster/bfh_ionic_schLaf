@@ -28,7 +28,7 @@ export class WindowPage implements OnInit {
 
   }
 
-  dateChanged(data) {
+  dateChanged() {
     /** asta face sa ai expus in consola data si ora selectata, ceva tre
      * modificat, dar inca nu stiu ce aume
      */
@@ -49,6 +49,7 @@ export class WindowPage implements OnInit {
 }).catch(function(error) {
   console.error("Error writing document: ", error);
 });
+
   }
 
  
