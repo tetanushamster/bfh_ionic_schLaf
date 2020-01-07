@@ -51,7 +51,12 @@ const routes: Routes = [
   {
     path: 'withings',
     loadChildren: () => import('./withings/withings.module').then( m => m.WithingsPageModule)
-  }];
+  },
+    {
+    path: 'questionspm',
+    loadChildren: () => import('./questionspm/questionspm.module').then( m => m.QuestionspmPageModule)
+  }
+];
 
   
 @NgModule({

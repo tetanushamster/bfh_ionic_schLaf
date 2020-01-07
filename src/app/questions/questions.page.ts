@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { stringify } from 'querystring';
 import { Router } from '@angular/router';
 import { format } from 'url';
+import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 
 @Component({
   selector: 'app-questions',
@@ -19,11 +20,11 @@ export class QuestionsPage implements OnInit {
   }
 
 data: string;
-  logForm(form) {  
+  logForm(form: { a1: String; a2: any; a3: any; a4: any; a5: any; a6: any; a7: any; a8: any; a9: any; a10: any; a11: any; a12: any; a13: any; a14a: any; a14b: any; a14c: any; a14d: any; a14e: any; }) {  
     return new Promise<any>((resolve, reject) =>{
     this.firestore
           .collection("protocol")
-          .add({q1: form.a1, q2: form.a2, q3: form.a3, q4: form.a4, q5: form.a5, q6: form.a6, q7: form.a7, q8: form.a8, q9: form.a9, q10: form.a10, q11: form.a11, q12: form.a12, q13: form.a13, q14a: form.a14a, q14b: form.a14b, q14c: form.a14c, q14d: form.a14d, user: 'dummy', time: this.now})
+          .add({q1: form.a1, q2: form.a2, q3: form.a3, q4: form.a4, q5: form.a5, q6: form.a6, q7: form.a7, q8: form.a8, q9: form.a9, q10: form.a10, q11: form.a11, q12: form.a12, q13: form.a13, q14a: form.a14a, q14b: form.a14b, q14c: form.a14c, q14d: form.a14d, q14e: form.a14e, user: 'dummy', time: this.now})
           .then(res => {this.router.navigateByUrl('/protocol')}, err => reject(err));
         });
         
@@ -46,12 +47,12 @@ data: string;
   
 
   questions: Array<{ row: string, answer: string, set: boolean, nextbtn: boolean }> = [
-    { row: 'Guten Morgen! Ich werde Ihnen nun einige Fragen stellen, um einen neuen Tagebucheintrag zu erfassen.', answer: '0', set: true, nextbtn: true },
-    { row: 'Wie war die Schlafqualität? (1=sehr gut / 8=sehr schlecht)', answer: '0', set: false, nextbtn: false },
+    { row: 'Guten Morgen! Ich werde Ihnen nun einige Fragen stellen, um einen neuen Morgeneintrag zu erfassen.', answer: '0', set: true, nextbtn: true },
+    { row: 'Wie gut haben Sie geschlafen? (1=sehr schlecht / 8=sehr gut)', answer: '0', set: false, nextbtn: false },
     { row: 'Antwort 1', answer: '1', set: false, nextbtn: false },
-    { row: 'Wie ist Ihr Gefühl des Erholtseins? (1=sehr gut / 8=sehr schlecht)', answer: '0', set: false, nextbtn: false },
+    { row: 'Wie erholt fühlen Sie sich? (1=schlecht erholt / 8=sehr erholt)', answer: '0', set: false, nextbtn: false },
     { row: 'Antwort 2', answer: '2', set: false, nextbtn: false },
-    { row: 'Wie war Ihre Müdigkeit beim Zubettgehen? (1=keine Müdigkeit / 8=starke Müdikgeit)', answer: '0', set: false, nextbtn: false },
+    { row: 'Wie müde waren Sie beim Zubettgehen? (1=keine Müdigkeit / 8=starke Müdikgeit)', answer: '0', set: false, nextbtn: false },
     { row: 'Antwort 3', answer: '3', set: false, nextbtn: false },
     { row: 'Wann sind Sie zu Bett gegangen?', answer: '0', set: false, nextbtn: false },
     { row: 'Antwort 4', answer: '4', set: false, nextbtn: false },

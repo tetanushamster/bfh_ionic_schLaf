@@ -13,69 +13,77 @@
 <ion-content>
  <ion-card  class="table">
         <ion-card-header>
-            <ion-card-title> Schlaftagebuch</ion-card-title>
+            <ion-card-title> Schlaftagebuch: Neuer Morgeneintrag</ion-card-title>
           </ion-card-header>  
     <form #form="ngForm" (ngSubmit)="logForm(form)">
      <ion-list>
-      <ion-grid>
+      <ion-grid >
       
-         <ion-row *ngFor="let question of questions; let i = index, let lastrow = last" >
-    <ion-col *ngIf="question.set && question.answer == '0'" size="2.5"><ion-avatar><img src="assets/img/sheep.png"></ion-avatar></ion-col>
-    <ion-col *ngIf="question.set" size="9">
+         <ion-row *ngFor="let question of questions; let i = index, let lastrow = last">
+    <ion-col *ngIf="question.set && question.answer == '0'" size="50%"><ion-avatar ><img src="assets/img/sheep.png"></ion-avatar></ion-col>
+    <ion-col *ngIf="question.set">
       <ion-label *ngIf="question.set && question.answer == '0'" class="ion-text-wrap">{{question.row}}</ion-label>
-      <ion-range *ngIf="question.set && question.answer == '1'" min="0" max="8" step="1" snaps="true" pin="true" [(ngModel)]="form.a1" name="a1" required=true></ion-range>
-      <ion-range *ngIf="question.set && question.answer == '2'" min="0" max="8" step="1" snaps="true" pin="true" [(ngModel)]="form.a2" name="a2" required=true></ion-range>
-      <ion-range *ngIf="question.set && question.answer == '3'" min="0" max="8" step="1" snaps="true" pin="true" [(ngModel)]="form.a3" name="a3" required=true></ion-range>
-      <ion-datetime *ngIf="question.set && question.answer == '4'" class="qinput" placeholder="Bitte auswählen" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a4" name="a4" required=true></ion-datetime>
-      <ion-input *ngIf="question.set && question.answer == '5'" class="qinput" placeholder="z.B. Buch lesen, Fernseh geschaut, .." [(ngModel)]="form.a5" name="a5" required=true></ion-input>
-      <ion-datetime *ngIf="question.set && question.answer == '6'" class="qinput" placeholder="Bitte auswählen" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a6" name="a6" required=true></ion-datetime>
-      <ion-input *ngIf="question.set && question.answer == '7'" class="qinput" type="number"  placeholder="0:00h" [(ngModel)]="form.a7" name="a7" required=true></ion-input>
-      <ion-input *ngIf="question.set && question.answer == '8'" class="qinput" type="number" placeholder="z.B. 2 mal"  [(ngModel)]="form.a8" name="a8" required=true></ion-input>
-      <ion-input *ngIf="question.set && question.answer == '9'" class="qinput" type="number"  placeholder="0:00h" [(ngModel)]="form.a9" name="a9" required=true></ion-input>
-      <ion-datetime *ngIf="question.set && question.answer == '10'" class="qinput" placeholder="Bitte auswählen" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a10" name="a10" required=true></ion-datetime>
-      <ion-datetime *ngIf="question.set && question.answer == '11'" class="qinput" placeholder="Bitte auswählen" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a11" name="a11" required=true></ion-datetime>
-      <ion-input *ngIf="question.set && question.answer == '12'" class="qinput" type="number"  placeholder="0:00h" [(ngModel)]="form.a12" name="a12" required=true></ion-input>
-      <ion-input *ngIf="question.set && question.answer == '13'" class="qinput" type="number"  placeholder="0:00h" [(ngModel)]="form.a13" name="a13" required=true></ion-input>
-      <ion-radio-group *ngIf="question.set && question.answer == '14'" [(ngModel)]="form.a14a" name="a14a" required=true>
+      <ion-range *ngIf="question.set && question.answer == '1'" min="1" max="8" step="1" snaps="true" pin="true" [(ngModel)]="form.a1" name="a1" required=true></ion-range>
+      <ion-range *ngIf="question.set && question.answer == '2'" min="1" max="8" step="1" snaps="true" pin="true" [(ngModel)]="form.a2" name="a2" required=true></ion-range>
+      <ion-range *ngIf="question.set && question.answer == '3'" min="1" max="8" step="1" snaps="true" pin="true" [(ngModel)]="form.a3" name="a3" required=true></ion-range>
+      <ion-datetime *ngIf="question.set && question.answer == '4'"  placeholder="Uhrzeit" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a4" name="a4" required=true></ion-datetime>
+      <ion-input *ngIf="question.set && question.answer == '5'"  placeholder="z.B. Buch lesen, Fernseh geschaut, .." [(ngModel)]="form.a5" name="a5" required=true></ion-input>
+      <ion-datetime *ngIf="question.set && question.answer == '6'"  placeholder="Uhrzeit" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a6" name="a6" required=true></ion-datetime>
+      <ion-input *ngIf="question.set && question.answer == '7'" class="timeinput" type="number"  placeholder="0.00h" [(ngModel)]="form.a7" name="a7" required=true></ion-input>
+      <ion-input *ngIf="question.set && question.answer == '8'" class="timeinput" type="number" placeholder="z.B. 2 mal"  [(ngModel)]="form.a8" name="a8" required=true></ion-input>
+      <ion-input *ngIf="question.set && question.answer == '9'" class="timeinput" type="number"  placeholder="0:00h" [(ngModel)]="form.a9" name="a9" required=true></ion-input>
+      <ion-datetime *ngIf="question.set && question.answer == '10'" placeholder="Uhrzeit" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a10" name="a10" required=true></ion-datetime>
+      <ion-datetime *ngIf="question.set && question.answer == '11'" placeholder="Uhrzeit" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a11" name="a11" required=true></ion-datetime>
+      <ion-input *ngIf="question.set && question.answer == '12'" class="timeinput" type="number"  placeholder="0.00h" [(ngModel)]="form.a12" name="a12" required=true></ion-input>
+      <ion-input *ngIf="question.set && question.answer == '13'" class="timeinput" type="number"  placeholder="0.00h" [(ngModel)]="form.a13" name="a13" required=true></ion-input>
+      <!--<ion-radio-group *ngIf="question.set && question.answer == '14'" [(ngModel)]="form.a14a" name="a14a" required=true>
           <ion-label float-right> Nein </ion-label>
             <ion-radio slot="start" value=false color="primary" float-right></ion-radio>
             <ion-label float-right> Ja </ion-label>
             <ion-radio slot="start" value=true color="primary" float-right></ion-radio>
           </ion-radio-group>
-          <ion-input *ngIf="question.set && question.answer == '14'" class="qinput" placeholder="z.B. Temesta" [(ngModel)]="form.a14b" name="a14b" required=true></ion-input>
-          <ion-input *ngIf="question.set && question.answer == '14'" class="qinput" type="number" placeholder="z.B. 1" [(ngModel)]="form.a14c" name="a14d" required=true></ion-input>
-          <ion-select *ngIf="question.set && question.answer == '14'" class="qinput" placeholder="Dosierung" cancelText="Abbrechen" okText="Weiter" [(ngModel)]="form.a14d" name="a14d" required=true>
+          <ion-radio-group *ngIf="question.set && question.answer == '14'" [(ngModel)]="form.a14b" name="a14b" required=true>
+              <ion-label float-right> vor zu Bettgehen </ion-label>
+                <ion-radio slot="start" value='vor zu Bettgehen' color="primary" float-right></ion-radio>
+                <ion-label float-right> in der Nacht </ion-label>
+                <ion-radio slot="start" value='in der Nacht' color="primary" float-right></ion-radio>
+              </ion-radio-group>
+          <ion-input *ngIf="question.set && question.answer == '14'" class="qinput" placeholder="z.B. Temesta" [(ngModel)]="form.a14c" name="a14c" required=true></ion-input>
+          <ion-input *ngIf="question.set && question.answer == '14'" class="qinput" type="number" placeholder="z.B. 1" [(ngModel)]="form.a14d" name="a14d" required=true></ion-input>
+          <ion-select *ngIf="question.set && question.answer == '14'" class="qinput" placeholder="Dosierung" cancelText="Abbrechen" okText="Weiter" [(ngModel)]="form.a14e" name="a14e" required=true>
           <ion-select-option value="stk">Stück</ion-select-option>
             <ion-select-option value="mg">mg</ion-select-option>
             <ion-select-option value="ml">ml</ion-select-option>
-          </ion-select>
-      <!--
+          </ion-select>-->
+      
       <ion-radio-group *ngIf="question.set && question.answer == '14'" [(ngModel)]="form.a14a" name="a14a">
-        <ion-label float-right> Nein </ion-label>
-          <ion-radio slot="start" value=false color="primary" (click)="setradio('false')" [checked]='true' float-right></ion-radio>
-          <ion-label float-right> Ja </ion-label>
-          <ion-radio slot="start" value=true color="primary" (click)="setradio('true')" float-right></ion-radio>
-        </ion-radio-group>
-        <ion-input *ngIf="isSelected('true') && question.set && question.answer == '14'" class="qinput" placeholder="z.B. Temesta" float-right [(ngModel)]="form.a14b" name="a14b"></ion-input>
-        <ion-label *ngIf="isSelected('false') && question.set && question.answer == '14'" value="test" [(ngModel)]="form.a14b" name="a14b">Test</ion-label>
-        <ion-input *ngIf="isSelected('true') && question.set && question.answer == '14'" class="qinput" type="number" placeholder="z.B. 1" [(ngModel)]="form.a14c" name="a14d"></ion-input>
-        <ion-input *ngIf="isSelected('false') && question.set && question.answer == '14'" class="qinput" readonly=true placeholder="z.B. 1" name="a14d"></ion-input>
-        <ion-select *ngIf="isSelected('true') && question.set && question.answer == '14'" class="qinput" placeholder="Dosierung" value='Dosierung' cancelText="Abbrechen" okText="Weiter" name="a14d">
+        
+          <ion-radio class="radio" value=false color="primary" (click)="setradio('false')" [checked]='true' ></ion-radio>
+          <ion-label  > Nein </ion-label>
+                    <ion-radio class="radio" value=true color="primary" (click)="setradio('true')" ></ion-radio>
+                    <ion-label  > Ja </ion-label>
+                  </ion-radio-group>
+
+        <ion-radio-group *ngIf="isSelected('true') && question.set && question.answer == '14'" [(ngModel)]="form.a14b" name="a14b" required=true>
+              <ion-radio class="radio" value='vor zu Bettgehen' color="primary"></ion-radio>
+              <ion-label  > vor zu Bettgehen </ion-label>
+              <ion-radio class="radio" value='in der Nacht' color="primary" ></ion-radio>
+              <ion-label > in der Nacht </ion-label>
+            </ion-radio-group>
+
+        <ion-input *ngIf="isSelected('true') && question.set && question.answer == '14'" placeholder="z.B. Temesta" float-right [(ngModel)]="form.a14c" name="a14c"></ion-input>
+        <ion-input *ngIf="isSelected('true') && question.set && question.answer == '14'" type="number" placeholder="z.B. 1" [(ngModel)]="form.a14d" name="a14d"></ion-input>
+        <ion-select *ngIf="isSelected('true') && question.set && question.answer == '14'"  placeholder="Dosierung" value='Dosierung' cancelText="Abbrechen" okText="Weiter" [(ngModel)]="form.a14e" name="a14e">
         <ion-select-option value="stk">Stück</ion-select-option>
           <ion-select-option value="mg">mg</ion-select-option>
           <ion-select-option value="ml">ml</ion-select-option>
         </ion-select>
-          <ion-select *ngIf="isSelected('false') && question.set && question.answer == '14'" class="qinput" readonly=true value='Dosierung' cancelText="Abbrechen" okText="Weiter" name="a14d">
-          <ion-select-option value="stk">Stück</ion-select-option>
-          <ion-select-option value="mg">mg</ion-select-option>
-          <ion-select-option value="ml">ml</ion-select-option>
-        </ion-select>
-      -->
+    
     </ion-col>
-    <ion-col *ngIf="question.set && question.nextbtn && !lastrow">
-      <ion-button ion-button (click)="next(i)">Weiter</ion-button>
+    <ion-col *ngIf="question.set && question.nextbtn && !lastrow" size="3.5">
+      <ion-button ion-button (click)="next(i)" class="nextbtn" >Weiter</ion-button>
     </ion-col>
-    <ion-col *ngIf="question.set && lastrow" size="4" ><ion-button ion-button type="submit" block>Speichern</ion-button>
+    <ion-col *ngIf="question.set && lastrow" size="3.5" ><ion-button ion-button type="submit" block>Speichern</ion-button>
       </ion-col>
 </ion-row>
     </ion-grid>
