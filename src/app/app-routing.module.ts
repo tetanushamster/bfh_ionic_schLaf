@@ -35,6 +35,11 @@ const routes: Routes = [
     loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
   },
   {
+    path: 'questionspm',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('./questionspm/questionspm.module').then( m => m.QuestionspmPageModule)
+  },
+  {
     path: 'window',
     //canActivate: [AuthGuard],
     loadChildren: () => import('./window/window.module').then( m => m.WindowPageModule)
