@@ -29,9 +29,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Import for the alarm clock
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-import { NgCircleProgressModule } from 'ng-circle-progress';
-
-// Import for PieChart looking good
 
 @NgModule({
   declarations: [
@@ -54,19 +51,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     AngularFireModule.initializeApp(environment.firebase, 'bhf_ionic_schlaf'),
     AngularFireAuthModule,
     /** AngularFirestoreModule: so you can use the firestore database */
-    AngularFirestoreModule,
-    
-    //progress circle
-    NgCircleProgressModule.forRoot({
-      radius: 100,
-      outerStrokeWidth: 16,
-      innerStrokeWidth: 8,
-      outerStrokeColor: "#a6cbf9",
-      innerStrokeColor: "#7db7fd",
-      animationDuration: 300,
-      responsive: true,
-      
-    }) 
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
