@@ -40,7 +40,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-              allowedUrls: ['https://sleepexpert.voxte.ch/withings/identity'],
+              allowedUrls: ['https://sleepexpert.ch/withings/identity'],
               sendAccessToken: true
               }
             }),

@@ -13,7 +13,7 @@ export const authConfig: AuthConfig = {
   //issuer: 'https://account.withings.com/oauth2_user/authorize2',
   issuer: 'https://account.withings.com/oauth2_user/authorize2',
   // URL of the SPA to redirect the user to after login
-  redirectUri: 'https://sleepexpert.voxte.ch/authorize',
+  redirectUri: 'https://sleepexpert.ch/authorize',
   responseType: 'code',
   // set the scope for the permissions the client should request
   // The first three are defined by OIDC. The 4th is a usecase-specific one
@@ -39,7 +39,7 @@ export class IdentityPage implements OnInit {
     this.oauthService.logoutUrl = "https://account.withings.com/logout";
     this.oauthService.issuer = "https://account.withings.com/oauth2_user/authorize2";
     this.oauthService.tokenEndpoint = "https://account.withings.com/oauth2/token";
-    this.oauthService.redirectUri = "https://sleepexpert.voxte.ch/withings/identity"; //window.location.origin + "/index.html";
+    this.oauthService.redirectUri = "https://sleepexpert.ch/withings/identity"; //window.location.origin + "/index.html";
     this.oauthService.clientId = "75567fc18fe0881c2757206ee375044433a5a76e12f6796d1f300b605683f22d";
     this.oauthService.dummyClientSecret = "cdbed08c93de9bc94afa4dcfbff800f23e818056415f2e17094fb14663eaa119";
     this.oauthService.scope = "user.activity";

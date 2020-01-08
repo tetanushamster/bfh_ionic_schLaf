@@ -22,7 +22,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-              allowedUrls: ['https://sleepexpert.voxte.ch/'],
+              allowedUrls: ['https://sleepexpert.ch/'],
               sendAccessToken: true
               }
             })],

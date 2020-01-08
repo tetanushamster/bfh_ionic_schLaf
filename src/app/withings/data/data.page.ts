@@ -2,7 +2,6 @@ import { AlertController } from '@ionic/angular';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { IonInfiniteScroll } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
@@ -24,14 +23,11 @@ export class DataPage implements OnInit {
   sliderOpts = { "loop" : true }
   currentobservableindex = 0;
   sleepSummaryObservable: Observable<any[]>;
-  @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
   WithingsData = [];
   lastStartDate: Date;
-
   doughnutChartLabels: Label[] = ['Wach', 'leichter Schlaf', 'Tiefschlaf'];
-  doughnutChartData: MultiDataSet = [ [55, 25, 20] ];
+  doughnutChartData: MultiDataSet = [ [] ];
   doughnutChartType: ChartType = 'doughnut';
-  
 
   constructor(public atrCtrl: AlertController, public router: Router, private oauthService: OAuthService, private http: HttpClient) { }
 
@@ -71,12 +67,13 @@ export class DataPage implements OnInit {
       if (this.WithingsData.length == 0) {
         console.log("ENTERED IF")
         let seriestmpstorage = msg.body.series;
+        //this.slider.lockSwipes(true);
         this.WithingsData = seriestmpstorage.reverse();
+        //this.slider.slideTo(6);
       } else {
         console.log("ENTERED ELSE");
         let seriestmpstorage = msg.body.series;
         this.WithingsData = [...this.WithingsData,...seriestmpstorage.reverse()];
-        //this.slider.slideTo(8);
         console.log("Withings Data is");
         console.log(this.WithingsData);
         }
@@ -100,6 +97,7 @@ export class DataPage implements OnInit {
         console.log("SLIDER INDEX AT" + this.currentobservableindex);
      });
   }
+  
 
   sliderNextEnd() {
     this.currentobservableindex -= 1;
@@ -111,10 +109,15 @@ export class DataPage implements OnInit {
   }
 
   sliderReachEnd() {
-    console.log("SLIDER HAS REACHED END")
-    this.lastStartDate.setDate(this.lastStartDate.getDate() - 1)
-    this.getWithingsData(this.lastStartDate);
+      this.slider.length().then( sliderlength => {
+      if (sliderlength > 1) {
+        console.log("SLIDER > 1 HAS REACHED END");
+        this.lastStartDate.setDate(this.lastStartDate.getDate() - 1);
+        this.getWithingsData(this.lastStartDate);
+      } else { console.log("SLIDER <= 1 HAS REACHED END"); }
+    } )
   }
+  
 
   sliderReachStart() {}
 
