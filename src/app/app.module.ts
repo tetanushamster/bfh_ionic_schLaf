@@ -18,6 +18,8 @@ registerLocaleData(localeDe, 'de');
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
+import { ChartsModule } from 'ng2-charts';
+
 import {AngularFireModule } from '@angular/fire';
 
 /** in enviroment is the "code" for fire */
@@ -25,12 +27,14 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-
+// Import for the alarm clock
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
   declarations: [
     AppComponent ],
-  entryComponents: [],
+  entryComponents: [
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -42,6 +46,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
               sendAccessToken: true
               }
             }),
+    ChartsModule,
     /** add AngularFireModule.initilaizeApp to the NGModule */
     AngularFireModule.initializeApp(environment.firebase, 'bhf_ionic_schlaf'),
     AngularFireAuthModule,
@@ -51,6 +56,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     /** Write: provide: FirestoreSettingsToken if you get a compile error */
     { provide: FirestoreSettingsToken, useValue: {} }
