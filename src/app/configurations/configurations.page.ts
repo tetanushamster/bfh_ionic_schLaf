@@ -3,8 +3,7 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { environment } from 'src/environments/environment';
 import { AlertController } from '@ionic/angular';
-import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
-
+ 
 firebase.initializeApp(environment.firebase);
 // initialize cloud firestore 
 var db = firebase.firestore();
