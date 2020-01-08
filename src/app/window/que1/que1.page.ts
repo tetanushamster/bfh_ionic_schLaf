@@ -6,23 +6,8 @@ import { environment } from 'src/environments/environment';
 // initialize cloud firestore
 const db = firebase.firestore();
 
-// get data from firebase
+// get data to firebase
 const wakeUp = db.collection("SleepExpert").doc("aufstehen");
-wakeUp.get().then(function(doc) {
-if (doc.exists) {
-  console.log("Aufstehen:", doc.data());
-
-  let data = doc.data();
-  console.log(data.hour,":", data.minute);
-
- } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-  }
-}).catch(function(error) {
- console.log("Error getting document:", error);
-});
-
 
 
 @Component({
@@ -35,9 +20,25 @@ export class Que1Page implements OnInit {
 wakeUp = new Date('hh:mm').toDateString();
 bettzeit = new Date('hh:mm').toDateString();
 
-  constructor() { }
-  datum = " ";
-
+  constructor( ) {
+    // get data from DB AND display on new page for user 2 see
+    wakeUp.get().then(doc =>  {
+      if (doc.exists) {
+        console.log("Aufstehen:", doc.data());     
+        let data = doc.data();
+        this.datum = data.hour + ":" + data.minute;
+        console.log("TIME Desired to wake up" + data.hour,":", data.minute);
+       } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+      }).catch(function(error) {
+       console.log("Error getting document:", error);
+      });
+      
+   }
+  datum = "  :  ";
+ 
   bedtimeChanged(data) {
     /** asta face sa ai expus in consola data si ora selectata, ceva tre
      * modificat, dar inca nu stiu ce aume
@@ -62,11 +63,13 @@ bettzeit = new Date('hh:mm').toDateString();
   }
   //display data on screen for the user
 getHourAndMinute(){
-  return "10:00"; 
+   
+  return this.datum; 
 }
+
+
   ngOnInit() {
-
-
+   
   }
 
 }

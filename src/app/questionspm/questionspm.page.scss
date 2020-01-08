@@ -1,0 +1,92 @@
+
+ion-card-title {
+    font-size: 24px;
+}
+
+.table {
+    position:fixed;
+    bottom:3%;
+}
+
+ion-button {
+
+height: 55px;
+width: 100%;
+font-size: 18px;
+font-style: bold;
+
+}
+
+
+ion-avatar {
+
+    border-color: black; 
+    border-width: .01em; 
+    border-style:solid;
+}
+
+ion-textarea {
+    border: solid .6px grey;
+    border-radius:8px;
+        width: 70%;
+        height: 75px;
+        float: right;
+        font-size: 18px;
+}
+
+ion-range {
+    border: solid .6px grey;
+    border-radius:8px;
+--bar-height: 7px;
+--height: 50px;
+
+    --knob-size: 30px;
+    width: 70%;
+    float: right;
+}
+
+ion-label {
+    font-size: 18px;
+
+}
+
+.radio {
+margin-left: 60%;
+
+}
+
+ion-datetime {
+    border: solid .6px grey;
+    border-radius:8px;
+    width: 150px;
+    height: 50px;
+    float: right;
+    font-size: 18px;
+    text-align:center;
+
+}
+
+ion-input {
+    border: solid .6px grey;
+border-radius:8px;
+    width: 65%;
+    height: 50px;
+    float: right;
+    font-size: 18px;
+
+}
+ion-select {
+    border: solid .6px grey;
+border-radius:8px;
+    width: 400px;
+    height: 50px;
+    float: right;
+    font-size: 18px;
+
+}
+
+.timeinput {
+
+    width: 150px;
+    text-align:center;
+}
