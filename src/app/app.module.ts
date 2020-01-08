@@ -42,7 +42,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-              allowedUrls: ['https://sleepexpert.voxte.ch/withings/identity'],
+              allowedUrls: ['https://sleepexpert.ch/withings/identity'],
               sendAccessToken: true
               }
             }),

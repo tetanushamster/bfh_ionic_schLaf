@@ -2,7 +2,6 @@ import { AlertController } from '@ionic/angular';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { IonInfiniteScroll } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
@@ -24,20 +23,52 @@ export class DataPage implements OnInit {
   sliderOpts = { "loop" : true }
   currentobservableindex = 0;
   sleepSummaryObservable: Observable<any[]>;
-  @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
   WithingsData = [];
   lastStartDate: Date;
-
   doughnutChartLabels: Label[] = ['Wach', 'leichter Schlaf', 'Tiefschlaf'];
-  doughnutChartData: MultiDataSet = [ [55, 25, 20] ];
+  doughnutChartData: MultiDataSet = [ [] ];
   doughnutChartType: ChartType = 'doughnut';
-  
+  WithingsItem = {};
+  color = "#90EE90";
 
   constructor(public atrCtrl: AlertController, public router: Router, private oauthService: OAuthService, private http: HttpClient) { }
 
   getDateAsYMD(somedate: Date) {
     let dateformat = 'yyyy-MM-dd';
     return formatDate(somedate, dateformat, 'en-US');
+  }
+
+  getUnixSecondsAsHourMinute(unixseconds: number) {
+    let somedate = new Date();
+    somedate.setTime(unixseconds * 1000);
+    console.log("ZEIT: " + somedate.getHours(),somedate.getMinutes());
+    let minuteprefix = "";
+    if (somedate.getMinutes() < 10 ) { minuteprefix = "0" }
+    let hourprefix = "";
+    if (somedate.getHours() < 10 ) { hourprefix = "0" }
+    return hourprefix + somedate.getHours() + ":" + minuteprefix + somedate.getMinutes()
+   }
+
+  getUnixSecondsAsHourMinuteDuration(unixseconds: number) {
+    let somedate = new Date();
+    somedate.setTime(unixseconds * 1000);
+    if (unixseconds < 60 * 60) {
+       return somedate.getMinutes() + "min" 
+      } else { 
+        return somedate.getHours() + "h " + somedate.getMinutes() + "min" 
+      }
+  }
+
+  enhanceWithingsDate(data: any[]) {
+    let event;
+    for (event of data) {
+      event.enddateAsHHMM = this.getUnixSecondsAsHourMinute(event.enddate);
+      event.startdateAsHHMM = this.getUnixSecondsAsHourMinute(event.startdate);
+      event.durationAsHHMM = this.getUnixSecondsAsHourMinuteDuration(event.enddate - event.startdate);
+      event.durationtowakeupAsHHMM = this.getUnixSecondsAsHourMinuteDuration(event.data.durationtowakeup);
+      event.wakeupdurationAsHHMM = this.getUnixSecondsAsHourMinuteDuration(event.data.wakeupduration);
+    }
+  return data;
   }
 
   getWithingsData(someenddate?: Date, somestartdate?: Date) {
@@ -58,7 +89,6 @@ export class DataPage implements OnInit {
     this.lastStartDate = startdate;
     console.log("DATA FROM " + startdateymd + " - " + enddateymd);
  
-
     let headers = new HttpHeaders()
         .set("Authorization", "Bearer " + this.oauthService.getAccessToken());
     let params = new HttpParams()
@@ -72,13 +102,12 @@ export class DataPage implements OnInit {
         console.log("ENTERED IF")
         let seriestmpstorage = msg.body.series;
         this.WithingsData = seriestmpstorage.reverse();
+        this.WithingsData = this.enhanceWithingsDate(this.WithingsData);
       } else {
         console.log("ENTERED ELSE");
         let seriestmpstorage = msg.body.series;
         this.WithingsData = [...this.WithingsData,...seriestmpstorage.reverse()];
-        //this.slider.slideTo(8);
-        console.log("Withings Data is");
-        console.log(this.WithingsData);
+        this.WithingsData = this.enhanceWithingsDate(this.WithingsData);
         }
     });
   }
@@ -97,24 +126,28 @@ export class DataPage implements OnInit {
     this.slider.getActiveIndex().then(
       (index)=>{
         this.currentobservableindex = index;
-        console.log("SLIDER INDEX AT" + this.currentobservableindex);
      });
   }
+  
 
   sliderNextEnd() {
     this.currentobservableindex -= 1;
     this.slider.getActiveIndex().then(
       (index)=>{
         this.currentobservableindex = index;
-        console.log("SLIDER INDEX AT" + this.currentobservableindex);
      });
   }
 
   sliderReachEnd() {
-    console.log("SLIDER HAS REACHED END")
-    this.lastStartDate.setDate(this.lastStartDate.getDate() - 1)
-    this.getWithingsData(this.lastStartDate);
+      this.slider.length().then( sliderlength => {
+      if (sliderlength > 1) {
+        console.log("SLIDER > 1 HAS REACHED END");
+        this.lastStartDate.setDate(this.lastStartDate.getDate() - 1);
+        this.getWithingsData(this.lastStartDate);
+      } else { console.log("SLIDER <= 1 HAS REACHED END"); }
+    } )
   }
+  
 
   sliderReachStart() {}
 
@@ -122,7 +155,6 @@ export class DataPage implements OnInit {
     if (direction == "left") {
       this.currentobservableindex += 1;
     }
-    console.log(direction);
   }
 
   async showConfirmAlert() {
@@ -140,7 +172,6 @@ export class DataPage implements OnInit {
   debug() {
     console.log("TOKEN IS VALID: " + this.oauthService.hasValidAccessToken());
     this.getWithingsData(this.lastStartDate);
-    console.log(this.sleepSummaryObservable[1]);
   }
 
   ngOnInit() {
