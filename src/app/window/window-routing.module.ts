@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WindowPage } from './window.page';
 
+
 const routes: Routes = [
   {
     path: '',
     component: WindowPage
-  },  {
+  },
+  {
     path: 'que1',
     loadChildren: () => import('./que1/que1.module').then( m => m.Que1PageModule)
   },
@@ -17,7 +19,11 @@ const routes: Routes = [
   {
     path: 'que3',
     loadChildren: () => import('./que3/que3.module').then( m => m.Que3PageModule)
+  },  {
+    path: 'alarm',
+    loadChildren: () => import('./alarm/alarm.module').then( m => m.AlarmPageModule)
   }
+
 
 ];
 

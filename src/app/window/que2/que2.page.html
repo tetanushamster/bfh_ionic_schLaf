@@ -22,6 +22,8 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-card>
+  
+     
     <ion-card-header>
       <ion-card-title>
         Schlaffenster bestimmen
@@ -33,9 +35,11 @@
 <ion-grid>
   <ion-row>
     <ion-col size="1">
+      <!-- blank col for desin reasons, in this col was the avatar-->
     
   </ion-col>
   <ion-col>
+    <!-- first question-->
     <ion-item>
        
       <ion-label class="ion-text-wrap">
@@ -46,33 +50,31 @@
   </ion-row>
   
   <ion-row>
+    <!-- row with inputed data-->
+   <ion-col>
+    <!-- emply space -> Time to the right of the window -->
+     </ion-col>
 
-      <ion-col>
-        <!-- emply space -> Time to the right of the window -->
-      </ion-col>
-
-
-      <ion-item>
-        <ion-label>HH:mm</ion-label>
-        <ion-datetime displayFormat="HH:mm"></ion-datetime>
-      </ion-item></ion-row>
-  
-</ion-grid>
+     <ion-item>
+        <ion-label id = "wakeUp"
+        position="floating">HH:mm</ion-label>
+        <ion-datetime 
+        displayFormat="HH:mm"
+        value="{{getHourAndMinute()}}"></ion-datetime>
+      </ion-item></ion-row></ion-grid>
     
 
-    
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="assets/img/sheep.png">
-          </ion-avatar>
-    
-          <ion-label class="ion-text-wrap">
-            Wann gehen Sie normalerweise ins Bett, um dieses Zeit aufzustehen?
+   <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col> 
+       <ion-item>
+         <ion-label class="ion-text-wrap">
+            Wann gehen Sie ins Bett, damit Sie zu dieser Zeit aufstehen können?
           </ion-label>
         </ion-item>  
-        
-        <ion-grid> <ion-row>
+      </ion-col></ion-row>
+       
+   <ion-grid> <ion-row>
 
           <ion-col>
             <!-- emply space -> Time to the right of the window -->
@@ -80,16 +82,54 @@
   
   
           <ion-item>
-            <ion-label>HH:mm</ion-label>
-            <ion-datetime displayFormat="HH:mm"></ion-datetime>
-          </ion-item></ion-row></ion-grid>
+            <ion-label id = "sleep"
+            position="floating">HH:mm</ion-label>
+            <ion-datetime 
+            displayFormat="HH:mm"
+             value="{{getSleep()}}"></ion-datetime>
+          </ion-item></ion-row>
+        </ion-grid>
+       <!-- 5th row of questions-->
+          <ion-item> 
+           <ion-avatar slot="start"><img src="assets/img/sheep.png"></ion-avatar> 
+           
+          <ion-label class="ion-text-wrap">
+            Können Sie dann gut schlafen?
+          </ion-label>
+          <!-- 6th row for choice-->
+        </ion-item> 
+        <ion-radio-group 
+        [(ngModel)]="gutgeschlafen"
+        (ionChange) ="restChanged($event)">
+          
+           <ion-item>
+            <ion-label>Ja</ion-label><ion-icon name="happy"></ion-icon>
+            <ion-radio 
+            id = "ja"
+            value="ja"></ion-radio>
+            <ion-item>   </ion-item>
+          <ion-label></ion-label><ion-label></ion-label>
+              <ion-label>Nein</ion-label><ion-icon name="sad"></ion-icon>
+              <ion-radio 
+              id = "nein"
+              value="nein"></ion-radio>
+              
+            </ion-item>
+        </ion-radio-group>
+       
+    
+     
+           
+           
+        
+        
           
           
     <div magin-vertical text-right>
       <!-- @ margin-verical text-right := makes the items be on the 
       right side of the page-->
 
-      <ion-button href="/window/que3/" fill="outline" color="#c3dcfb">
+      <ion-button href="/window/que3/" color="primary">
         <!-- Add icon to the button
           @slot start:= positions the icon in front of the name -->
         <ion-icon slot="start" name="arrow-forward"></ion-icon>
@@ -102,7 +142,7 @@
 
 
     <!--Progeress bar: just for estetics and ffun-->
-    <ion-progress-bar color="secondary" value="0.3"></ion-progress-bar>
+    <ion-progress-bar color="secondary" value="0.75"></ion-progress-bar>
 
 
   </ion-card>
