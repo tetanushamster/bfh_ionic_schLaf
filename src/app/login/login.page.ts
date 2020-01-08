@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,6 +15,7 @@ export class LoginPage implements OnInit {
   /** vars for the Authentification of the user */
   userID = '';
   password = '';
+ 
 
   constructor(public afAuth: AngularFireAuth,
               public alert: AlertController,
@@ -44,6 +46,7 @@ export class LoginPage implements OnInit {
         console.log ('Invalid email');
       }
     }
+ 
   }
   async showAlert( header: string, message: string) {
     const alert = await this.alert.create({

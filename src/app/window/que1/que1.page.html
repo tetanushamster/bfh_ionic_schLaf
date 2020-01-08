@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+  
   <br>
 
   <!--back button-->
@@ -30,6 +31,7 @@
 
  <ion-grid>
   <ion-row>
+     <!-- blank col for desin reasons, in this col was the avatar-->
     <ion-col size="1">
     
   </ion-col>
@@ -46,24 +48,22 @@
   <ion-row>
 
       <ion-col>
-        <!-- emply space -> Time to the right of the window -->
+        <!-- row with inputed data -->
       </ion-col>
-
+        <!-- emply space -> Time to the right of the window -->
       
       <ion-item >
         <ion-label 
         id = "wakeUp"
         position="floating">HH:mm</ion-label>
         <ion-datetime 
-        displayFormat="HH:mm"  
+        displayFormat="HH:mm"
         value="{{getHourAndMinute()}}"></ion-datetime>
       </ion-item></ion-row>
   
 </ion-grid>
-    
 
-    
-
+      <!-- 3rd row-->
         <ion-item>
           <ion-avatar slot="start">
             <img src="assets/img/sheep.png">
@@ -75,17 +75,18 @@
         </ion-item>  
         
         <ion-grid> <ion-row>
-
+          <!-- 4th row response row-->
           <ion-col>
             <!-- emply space -> Time to the right of the window -->
           </ion-col>
   
-  
+        
           <ion-item>
             <ion-label position="floating">HH:mm</ion-label>
             <ion-datetime displayFormat="HH:mm"
             [(ngModel)]="bettzeit" 
-          (ionChange) ="bedtimeChanged($event)" >></ion-datetime>
+          (ionChange) ="bedtimeChanged($event)" >
+        </ion-datetime>
           </ion-item></ion-row></ion-grid>
           
           
@@ -106,7 +107,8 @@
 
 
     <!--Progeress bar: just for estetics and ffun-->
-    <ion-progress-bar color="secondary" value="0.2"></ion-progress-bar>
+    <ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
+
 
 
   </ion-card>
@@ -114,3 +116,5 @@
   <!-- make the radio buttons or a toggle button-->
 
 </ion-content>
+
+ 

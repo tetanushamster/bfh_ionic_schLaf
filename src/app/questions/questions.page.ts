@@ -31,7 +31,14 @@ data: string;
     return new Promise<any>((resolve, reject) =>{
     this.firestore
           .collection("protocol")
-          .add({q1:  form.a1, q2: form.a2, q3: form.a3, q4: form.a4, q5: form.a5, q6: form.a6, q7: form.a7, q8: form.a8, q9: form.a9, q10: form.a10, q11: form.a11, q12: form.a12, q13: form.a13, q14a: form.a14a, q14b: form.a14b, q14c: form.a14c, q14d: form.a14d, user: 'dummy', time: this.now})
+          .add({q1:  form.a1, q2: form.a2, 
+            q3: form.a3, q4: form.a4, 
+            q5: form.a5, q6: form.a6, 
+            q7: form.a7, q8: form.a8, q9: form.a9, 
+            q10: form.a10, q11: form.a11, q12: form.a12, 
+            q13: form.a13, q14a: form.a14a, q14b: form.a14b, 
+            q14c: form.a14c, q14d: form.a14d, 
+            user: 'dummy', time: this.now})
           .then(res => {this.router.navigateByUrl('/protocol')}, err => reject(err));
         });
         
