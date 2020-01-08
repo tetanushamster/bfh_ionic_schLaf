@@ -27,12 +27,14 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-
+// Import for the alarm clock
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
   declarations: [
     AppComponent ],
-  entryComponents: [],
+  entryComponents: [
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -54,6 +56,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     /** Write: provide: FirestoreSettingsToken if you get a compile error */
     { provide: FirestoreSettingsToken, useValue: {} }
