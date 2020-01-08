@@ -30,9 +30,10 @@
     </ion-card-header>
     <ion-item>
       <ion-label class="ion-text-wrap">
-       Vom Patienten definierte Schlafdauer: h
+       Vom Patienten definierte Schlafdauer: {{ getRecomandation()}} Stunden.
      </ion-label>
    </ion-item>
+    
     <ion-item>
        <ion-label class="ion-text-wrap">
         Empfand der Patient den Schlaf als erholsam?
@@ -88,12 +89,12 @@
       <!-- @ margin-verical text-right := makes the items be on the 
       right side of the page-->
 
-      <ion-button   color ="primary">
+      <ion-button href="/home" color ="primary">
         <!-- Add icon to the button
           @slot start:= positions the icon in front of the name -->
         <ion-icon slot="start" name="arrow-forward"></ion-icon>
         <!-- name of button-->
-        Weiter
+        Bestätigen
 
       </ion-button>
     </div>
