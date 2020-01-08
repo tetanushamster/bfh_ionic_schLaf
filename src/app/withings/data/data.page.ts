@@ -68,15 +68,17 @@ export class DataPage implements OnInit {
     .subscribe(msg => { 
       if (this.WithingsData.length == 0) {
         console.log("ENTERED IF")
-        this.WithingsData = msg.body.series;
-        this.slider.slideTo(6);
+        let seriestmpstorage = msg.body.series;
+        this.WithingsData = seriestmpstorage.reverse();
+        //this.slider.slideTo(6);
       } else {
         console.log("ENTERED ELSE");
         let seriestmpstorage = msg.body.series;
-        this.WithingsData = [...seriestmpstorage,...this.WithingsData];
+        this.WithingsData = [...this.WithingsData,...seriestmpstorage.reverse()];
+        //this.slider.slideTo(8);
         console.log("Withings Data is");
         console.log(this.WithingsData);
-        }     
+        }
     });
   }
 
@@ -108,12 +110,11 @@ export class DataPage implements OnInit {
   }
 
   sliderReachEnd() {
-  }
-
-  sliderReachStart() {
     this.lastStartDate.setDate(this.lastStartDate.getDate() - 1)
     this.getWithingsData(this.lastStartDate);
   }
+
+  sliderReachStart() {}
 
   ChangeObservableIndexOnSwipingMotion(direction) {
     if (direction == "left") {
@@ -124,8 +125,8 @@ export class DataPage implements OnInit {
 
   async showConfirmAlert() {
       const alert = await this.atrCtrl.create({
-        header: 'Alert',
-        subHeader: 'Subtitle',
+        header: '',
+        subHeader: '',
         message: 'Bitte loggen loggen sie sich zuerst via Withings ein.',
         buttons: [
           { text: 'Zum Login', handler: () => {this.router.navigate(['/withings/identity']); }},
@@ -142,5 +143,6 @@ export class DataPage implements OnInit {
 
   ngOnInit() {
     if ( ! this.oauthService.hasValidAccessToken() ) { this.showConfirmAlert(); }
+    this.getWithingsData(this.lastStartDate);
   }
 }

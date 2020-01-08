@@ -10,9 +10,6 @@
 </ion-header>
 
 <ion-content>
-    <button class="btn btn-default" (click)="debug()">
-        debug
-    </button>
   <ion-slides #slider [options]="sliderOpts" (ionSlideNextEnd)="sliderNextEnd()" (ionSlidePrevEnd)="sliderPrivEnd()" (ionSlideReachEnd)="sliderReachEnd()" (ionSlideReachStart)="sliderReachStart()">
     <ion-slide *ngFor="let item of WithingsData">
     <ion-card>
