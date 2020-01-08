@@ -7,10 +7,8 @@ import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { IonSlides } from '@ionic/angular';
-
-import { map } from 'rxjs/operators';
-import { merge, concat } from 'rxjs';
-import { reverse } from 'dns';
+import { ChartType } from 'chart.js';
+import { MultiDataSet, Label } from 'ng2-charts';
 
 
 
@@ -29,6 +27,10 @@ export class DataPage implements OnInit {
   @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
   WithingsData = [];
   lastStartDate: Date;
+
+  doughnutChartLabels: Label[] = ['Wach', 'leichter Schlaf', 'Tiefschlaf'];
+  doughnutChartData: MultiDataSet = [ [55, 25, 20] ];
+  doughnutChartType: ChartType = 'doughnut';
   
 
   constructor(public atrCtrl: AlertController, public router: Router, private oauthService: OAuthService, private http: HttpClient) { }
@@ -68,15 +70,16 @@ export class DataPage implements OnInit {
     .subscribe(msg => { 
       if (this.WithingsData.length == 0) {
         console.log("ENTERED IF")
-        this.WithingsData = msg.body.series;
-        this.slider.slideTo(6);
+        let seriestmpstorage = msg.body.series;
+        this.WithingsData = seriestmpstorage.reverse();
       } else {
         console.log("ENTERED ELSE");
         let seriestmpstorage = msg.body.series;
-        this.WithingsData = [...seriestmpstorage,...this.WithingsData];
+        this.WithingsData = [...this.WithingsData,...seriestmpstorage.reverse()];
+        //this.slider.slideTo(8);
         console.log("Withings Data is");
         console.log(this.WithingsData);
-        }     
+        }
     });
   }
 
@@ -108,12 +111,12 @@ export class DataPage implements OnInit {
   }
 
   sliderReachEnd() {
-  }
-
-  sliderReachStart() {
+    console.log("SLIDER HAS REACHED END")
     this.lastStartDate.setDate(this.lastStartDate.getDate() - 1)
     this.getWithingsData(this.lastStartDate);
   }
+
+  sliderReachStart() {}
 
   ChangeObservableIndexOnSwipingMotion(direction) {
     if (direction == "left") {
@@ -124,8 +127,8 @@ export class DataPage implements OnInit {
 
   async showConfirmAlert() {
       const alert = await this.atrCtrl.create({
-        header: 'Alert',
-        subHeader: 'Subtitle',
+        header: '',
+        subHeader: '',
         message: 'Bitte loggen loggen sie sich zuerst via Withings ein.',
         buttons: [
           { text: 'Zum Login', handler: () => {this.router.navigate(['/withings/identity']); }},
@@ -142,5 +145,6 @@ export class DataPage implements OnInit {
 
   ngOnInit() {
     if ( ! this.oauthService.hasValidAccessToken() ) { this.showConfirmAlert(); }
+    this.getWithingsData(this.lastStartDate);
   }
 }
