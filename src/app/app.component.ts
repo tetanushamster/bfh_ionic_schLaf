@@ -14,8 +14,7 @@ import { AngularFireModule } from '@angular/fire';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  
-  
+
   public appPages = [
     {
       title: 'Home',
@@ -28,12 +27,7 @@ export class AppComponent {
       icon: 'book'
     },
     {
-      title: 'Aufzeichnungen',
-      url: '/records',
-      icon: 'stats'
-    },
-    {
-      title: 'Schlaffenster',
+      title: 'Schlafplaner',
       url: '/window',
       icon: 'bed'
     },
@@ -48,7 +42,7 @@ export class AppComponent {
       icon: 'wifi'
     },
     {
-      title: 'Configurations',
+      title: 'Konfigurationen',
       url: '/configurations',
       icon: 'construct'
     }

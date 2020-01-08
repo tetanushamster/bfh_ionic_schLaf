@@ -10,11 +10,61 @@
 </ion-header>
 
 <ion-content>
+  <br>
+
+  <!--back button-->
+
+  <ion-toolbar>
+    <ion-buttons slot="start" position="left">
+      <ion-back-button defaultHref="home">
+
+      </ion-back-button> Zurück
+    </ion-buttons>
+  </ion-toolbar>
   <ion-card>
+    
+      
+         <br>
+         <div magin-vertical text-center>
+           <ion-grid> 
+             <ion-row>
+               <ion-col size="0.5">
+                 
+               </ion-col>
+               <ion-col>
+                  <ion-card-title>
+             <ion-icon name="information-circle-outline"></ion-icon>
+             Schlafinformationen
+           </ion-card-title>
+               </ion-col>
+             </ion-row>
+             
+           </ion-grid>
+         <br>
+           </div>    
+            
   <ion-card-content>
-    <ion-button routerLink="/information/therapie" expand="block">Therapie</ion-button>
-    <ion-button routerLink="/information/schlafkrankheit" expand="block">Schlafkrankheit</ion-button>
-    <ion-button routerLink="/information/schlafhygene" expand="block">Schlafhygiene</ion-button>
+    <ion-button routerLink="/information/therapie" 
+    expand="block">
+    <ion-icon name="medical"></ion-icon>
+    Therapie</ion-button>
+    <ion-button routerLink="/information/schlafkrankheit"
+     expand="block">
+     <ion-icon name="thermometer"></ion-icon>
+     Schlafkrankheit</ion-button>
+    <ion-button routerLink="/information/schlafhygene" 
+    expand="block">
+    <ion-icon name="trophy"></ion-icon>
+    
+    Schlafhygiene</ion-button>
   </ion-card-content>
+  
+  <br>
+  <br>
+  <br><br>
+  <br>
+  <br><br>
+  <br>
+  <br>
 </ion-card>
 </ion-content>

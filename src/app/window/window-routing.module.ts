@@ -19,9 +19,6 @@ const routes: Routes = [
   {
     path: 'que3',
     loadChildren: () => import('./que3/que3.module').then( m => m.Que3PageModule)
-  },  {
-    path: 'alarm',
-    loadChildren: () => import('./alarm/alarm.module').then( m => m.AlarmPageModule)
   }
 
 

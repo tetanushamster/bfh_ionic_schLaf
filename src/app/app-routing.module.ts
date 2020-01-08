@@ -44,12 +44,6 @@ const routes: Routes = [
     //canActivate: [AuthGuard],
     loadChildren: () => import('./window/window.module').then( m => m.WindowPageModule)
   },
-
-   {
-    path: 'records',
-    //canActivate: [AuthGuard],
-    loadChildren: () => import('./records/records.module').then( m => m.RecordsPageModule)
-  },
   {
     path: 'information',
     //canActivate: [AuthGuard],
@@ -66,6 +60,8 @@ const routes: Routes = [
     then( m => m.ConfigurationsPageModule)
   }
 ];
+
+
 
 
 @NgModule({
