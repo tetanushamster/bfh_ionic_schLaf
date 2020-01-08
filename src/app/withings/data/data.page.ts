@@ -7,10 +7,8 @@ import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { IonSlides } from '@ionic/angular';
-
-import { map } from 'rxjs/operators';
-import { merge, concat } from 'rxjs';
-import { reverse } from 'dns';
+import { ChartType } from 'chart.js';
+import { MultiDataSet, Label } from 'ng2-charts';
 
 
 
@@ -29,6 +27,10 @@ export class DataPage implements OnInit {
   @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
   WithingsData = [];
   lastStartDate: Date;
+
+  doughnutChartLabels: Label[] = ['Wach', 'leichter Schlaf', 'Tiefschlaf'];
+  doughnutChartData: MultiDataSet = [ [55, 25, 20] ];
+  doughnutChartType: ChartType = 'doughnut';
   
 
   constructor(public atrCtrl: AlertController, public router: Router, private oauthService: OAuthService, private http: HttpClient) { }
@@ -70,7 +72,6 @@ export class DataPage implements OnInit {
         console.log("ENTERED IF")
         let seriestmpstorage = msg.body.series;
         this.WithingsData = seriestmpstorage.reverse();
-        //this.slider.slideTo(6);
       } else {
         console.log("ENTERED ELSE");
         let seriestmpstorage = msg.body.series;
@@ -110,6 +111,7 @@ export class DataPage implements OnInit {
   }
 
   sliderReachEnd() {
+    console.log("SLIDER HAS REACHED END")
     this.lastStartDate.setDate(this.lastStartDate.getDate() - 1)
     this.getWithingsData(this.lastStartDate);
   }

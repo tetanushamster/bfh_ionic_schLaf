@@ -18,6 +18,8 @@ registerLocaleData(localeDe, 'de');
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
+import { ChartsModule } from 'ng2-charts';
+
 import {AngularFireModule } from '@angular/fire';
 
 /** in enviroment is the "code" for fire */
@@ -42,6 +44,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
               sendAccessToken: true
               }
             }),
+    ChartsModule,
     /** add AngularFireModule.initilaizeApp to the NGModule */
     AngularFireModule.initializeApp(environment.firebase, 'bhf_ionic_schlaf'),
     AngularFireAuthModule,

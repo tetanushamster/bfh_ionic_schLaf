@@ -55,42 +55,13 @@ public login() {
 
 public logoff() {
     this.oauthService.logOut();
-    let format = 'yyyy-MM-dd';
-    let date = new Date();
-    let formattedDate = formatDate(date, format, "en-US");
-    console.log(formattedDate);
 }
 
-public debug() {
-    //console.log(this.oauthService.getIdentityClaims());
-    //this.route.queryParams.subscribe(params => {console.log(params.code);});
-    let dateformat = 'yyyy-MM-dd';
-    //let enddateymd = new Date();
-    let startdateymd = "2019-12-03"
-    let enddate  = new Date();
-    let enddateymd = formatDate(enddate, dateformat,"en-US");
-    //startdate.setDate(startdate.getDate() - 7)
-    //this.sleepSummaryObservable = this.http.get("https://my-json-server.typicode.com/typicode/demo/comments");
-    let headers = new HttpHeaders()
-        .set("Authorization", "Bearer " + this.oauthService.getAccessToken());
-    let params = new HttpParams()
-        .set("action","getsummary")
-        .set("data_fields","durationtosleep,durationtowakeup,deepsleepduration,lightsleepduration,sleep_score,wakeupcount,wakeupduration")
-        .set("startdateymd", startdateymd.toString())
-        .set("enddateymd", enddateymd.toString());
-    console.log(startdateymd, enddateymd, this.oauthService.getAccessToken() );
-    console.log("startdateymd="+startdateymd+"&enddateymd="+enddateymd);
-    this.http.get("https://wbsapi.withings.net/v2/sleep", {headers, params}).subscribe((res : any[])=>{console.log(res)});
-    console.log("IS VALID ? : " + this.oauthService.hasValidAccessToken())
-    //this.sleepSummaryObservable = 
-    //console.log(this.sleepSummaryObservable)
-}
-
-public hasValidAccessTokenAsText() {
+public hasValidAccessTokenAsBool() {
   if (this.oauthService.hasValidAccessToken()) {
-    return 'Erfolgreich mit Withings verbunden.'; }
-  else {
-      return 'Kein gültiges Withings Login erkannt.';
+    return true; 
+  }  else {
+      return false;
     }
 }
 

@@ -9,22 +9,26 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="WithingsData">
   <ion-slides #slider [options]="sliderOpts" (ionSlideNextEnd)="sliderNextEnd()" (ionSlidePrevEnd)="sliderPrivEnd()" (ionSlideReachEnd)="sliderReachEnd()" (ionSlideReachStart)="sliderReachStart()">
     <ion-slide *ngFor="let item of WithingsData">
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        <ion-card-subtitle>Withings Sensordaten</ion-card-subtitle>
         <ion-card-title> Schlafdaten für: {{ item.date }}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        ID: {{ item.id }}, Deep Sleep Duration: {{ item.data.deepsleepduration }} / Light Sleep Duration:  {{ item.data.lightsleepduration }} / WakeUp Count  {{ item.data.wakeupcount }} 
+      <ion-card-content> 
+        <div class="chart-wrapper">
+          <canvas baseChart 
+          [data]="[[item.data.wakeupduration,item.data.lightsleepduration,item.data.deepsleepduration]]"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType">
+        </canvas>
+      </div>
       </ion-card-content>
     </ion-card>
     </ion-slide> 
   </ion-slides> 
-
-
 
   <ion-toolbar>
       <ion-buttons slot="start" position="left">
