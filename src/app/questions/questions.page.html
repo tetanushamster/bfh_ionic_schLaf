@@ -10,10 +10,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content scroll-y="true">
  <ion-card  class="table">
         <ion-card-header>
-            <ion-card-title> Schlaftagebuch: Neuer Morgeneintrag</ion-card-title>
+            <ion-card-title> Schlaftagebuch</ion-card-title>
+            <ion-card-subtitle>Neuer Morgeneintrag</ion-card-subtitle>
           </ion-card-header>  
     <form #form="ngForm" (ngSubmit)="logForm(form)">
      <ion-list>
@@ -80,10 +81,10 @@
         </ion-select>
     
     </ion-col>
-    <ion-col *ngIf="question.set && question.nextbtn && !lastrow" size="3.5">
+    <ion-col *ngIf="question.set && question.nextbtn && !lastrow" size="3">
       <ion-button ion-button (click)="next(i)" class="nextbtn" >Weiter</ion-button>
     </ion-col>
-    <ion-col *ngIf="question.set && lastrow" size="3.5" ><ion-button ion-button type="submit" block>Speichern</ion-button>
+    <ion-col *ngIf="question.set && lastrow" class="colbtn" size="3"><ion-button ion-button type="submit" block>Speichern</ion-button>
       </ion-col>
 </ion-row>
     </ion-grid>

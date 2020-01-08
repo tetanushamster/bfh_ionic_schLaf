@@ -11,10 +11,14 @@
 </ion-header>
 
 <ion-content>
- <ion-card  class="table">
+    
+ <ion-card>
+      
         <ion-card-header>
-            <ion-card-title> Schlaftagebuch: Neuer Abendeintrag</ion-card-title>
+            <ion-card-title> Schlaftagebuch</ion-card-title>
+            <ion-card-subtitle>Neuer Abendeintrag</ion-card-subtitle>
           </ion-card-header>  
+        
     <form #form="ngForm" (ngSubmit)="logForm(form)">
      <ion-list>
       <ion-grid>
@@ -31,16 +35,17 @@
       <ion-range *ngIf="question.set && question.answer == '6'" min="1" max="8" step="1" snaps="true" pin="true" [(ngModel)]="form.a6" name="a6" required=true></ion-range>
       <ion-textarea *ngIf="question.set && question.answer == '7'"  placeholder="Leer lassen, falls es keine besondere Ereignisse gab" [(ngModel)]="form.a7" name="a7" required=true></ion-textarea>
     </ion-col>
-    <ion-col *ngIf="question.set && question.nextbtn && !lastrow" size="3.5">
+    <ion-col *ngIf="question.set && question.nextbtn && !lastrow" size="3">
       <ion-button ion-button (click)="next(i)" class="nextbtn">Weiter</ion-button>
     </ion-col>
-    <ion-col *ngIf="question.set && lastrow" size="3.5" ><ion-button ion-button type="submit" block>Speichern</ion-button>
+    <ion-col *ngIf="question.set && lastrow" size="3" ><ion-button ion-button type="submit" block>Speichern</ion-button>
       </ion-col>
 </ion-row>
     </ion-grid>
     </ion-list>
     </form>
-  </ion-card>
+</ion-card>
+
 
 
 

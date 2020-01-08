@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { stringify } from 'querystring';
 import { Router } from '@angular/router';
 import { format } from 'url';
+import { IonContent, IonCard, IonCardContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-questionspm',
@@ -11,14 +12,14 @@ import { format } from 'url';
   styleUrls: ['./questionspm.page.scss'],
 })
 export class QuestionspmPage implements OnInit {
-
   public now: Date = new Date();
   constructor( private firestore: AngularFirestore, private router: Router ) { }
+
 
   ngOnInit() {
   }
 
-//data: string;
+
   logForm(form) { 
     return new Promise<String>((resolve, reject) =>{
     this.firestore
@@ -63,13 +64,12 @@ export class QuestionspmPage implements OnInit {
     { row: 'Antwort 7', answer: '7', set: false, nextbtn: false },
   ];
 
-// This function will allow you to make a ion-input become a simple text display when users finishes to input the phoneNotice item
+
+
 next(index){
-    // We set the phoneNotice at given index completed
     this.questions[index + 1].set = true;
     this.questions[index + 2].set = true;
     this.questions[index].nextbtn = false;
     this.questions[index + 2].nextbtn = true;
-    
 }
 }
