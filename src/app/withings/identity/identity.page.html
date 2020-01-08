@@ -10,7 +10,18 @@
       </ion-header>
   
   <ion-content>
-      <ion-chip *ngIf="hasValidAccessTokenAsBool()" color="success">
+    <br> 
+    <ion-toolbar>
+          <ion-buttons slot="start" position="left">
+            <ion-back-button defaultHref="/withings">
+            </ion-back-button> Zurück
+          </ion-buttons>
+      </ion-toolbar>
+    <ion-card> 
+      <br>
+       
+       <div magin-vertical text-center>
+        <ion-chip *ngIf="hasValidAccessTokenAsBool()" color="success">
         <ion-icon name="checkmark-circle"></ion-icon>
         <ion-label>Erfolgreich mit Withings verbunden.</ion-label>
       </ion-chip>
@@ -18,12 +29,36 @@
         <ion-icon name="close-circle"></ion-icon>
         <ion-label>Keine Withings Verbindung erkannt.</ion-label>
       </ion-chip>
-      <ion-button (click)="login()" expand="block">Login with Withings</ion-button>
-      <ion-button (click)="logoff()" expand="block">Logoff</ion-button>
-      <ion-toolbar>
-          <ion-buttons slot="start" position="left">
-            <ion-back-button defaultHref="/withings">
-            </ion-back-button> Zurück
-          </ion-buttons>
-      </ion-toolbar>
+    </div>
+    <br><br><br>
+    <br>
+      <ion-grid> 
+        <ion-row>
+          <ion-col size="2">
+            </ion-col>
+          <ion-col>
+            <ion-card-title>
+              <ion-icon  name="person" ></ion-icon>
+          App authorisieren
+        </ion-card-title>
+         </ion-col>
+        </ion-row>
+       
+        <ion-card>
+          <ion-button (click)="login()" expand="block">
+            <ion-icon slot="start" name="key"></ion-icon>
+            Login</ion-button>
+            <br>
+          
+          <ion-button (click)="logoff()" expand="block">
+            <ion-icon slot="start" name="log-out"></ion-icon>
+            Logoff</ion-button>
+            
+        </ion-card>
+      </ion-grid>
+      
+      <br><br><br><br><br><br><br><br><br>
+      
+    </ion-card>
+      
   </ion-content>

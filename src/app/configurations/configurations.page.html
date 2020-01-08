@@ -23,11 +23,27 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        Schlaffenster konfigurieren
-      </ion-card-title>
-    </ion-card-header>
+    
+      
+         <br>
+         <div magin-vertical text-center>
+           <ion-grid> 
+             <ion-row>
+               <ion-col size="0.5">
+                 
+               </ion-col>
+               <ion-col>
+                  <ion-card-title>
+             <ion-icon name="construct"></ion-icon>
+             Schlaffenster konfigurieren 
+           </ion-card-title>
+               </ion-col>
+             </ion-row>
+             
+           </ion-grid>
+         <br>
+           </div>       
+    
     <ion-item>
       <ion-label class="ion-text-wrap">
        Vom Patienten definierte Schlafdauer: {{ getRecomandation()}} Stunden.
@@ -100,7 +116,7 @@
     </div>
 
 
-
+    <br><br>
     <!--Progeress bar: just for estetics and ffun-->
     <ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
 
