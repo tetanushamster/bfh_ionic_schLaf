@@ -13,19 +13,21 @@
     <button class="btn btn-default" (click)="debug()">
         debug
     </button>
-    <div *ngIf="sleepSummaryObservable">
-        <ion-list>
-            <ion-item *ngFor="let item of sleepSummaryObservable">ID: {{ item.id }}, DSL: {{ item.data.deepsleepduration }} / LSL:  {{ item.data.lightsleepduration }} / WAC  {{ item.data.wakeupcount }} </ion-item>
-          </ion-list>
-    </div>
+  <ion-slides #slider [options]="sliderOpts" (ionSlideNextEnd)="sliderNextEnd()" (ionSlidePrevEnd)="sliderPrivEnd()" (ionSlideReachEnd)="sliderReachEnd()" (ionSlideReachStart)="sliderReachStart()">
+    <ion-slide *ngFor="let item of WithingsData">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        <ion-card-title> Schlafdaten für: {{ item.date }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        ID: {{ item.id }}, Deep Sleep Duration: {{ item.data.deepsleepduration }} / Light Sleep Duration:  {{ item.data.lightsleepduration }} / WakeUp Count  {{ item.data.wakeupcount }} 
+      </ion-card-content>
+    </ion-card>
+    </ion-slide> 
+  </ion-slides> 
 
 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Loading more data...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 
   <ion-toolbar>
       <ion-buttons slot="start" position="left">

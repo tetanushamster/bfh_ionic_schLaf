@@ -6,7 +6,11 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+import { IonSlides } from '@ionic/angular';
+
 import { map } from 'rxjs/operators';
+import { merge, concat } from 'rxjs';
+import { reverse } from 'dns';
 
 
 
@@ -15,16 +19,19 @@ import { map } from 'rxjs/operators';
   templateUrl: './data.page.html',
   styleUrls: ['./data.page.scss'],
 })
-export class DataPage implements OnInit {
 
+
+export class DataPage implements OnInit {
+  @ViewChild('slider', {static: true}) private slider: IonSlides;
+  sliderOpts = { "loop" : true }
+  currentobservableindex = 0;
   sleepSummaryObservable: Observable<any[]>;
   @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
   WithingsData = [];
   lastStartDate: Date;
+  
 
-  constructor(public atrCtrl: AlertController, public router: Router, private oauthService: OAuthService, private http: HttpClient) {
-    //this.loadmoreitems();
-  }
+  constructor(public atrCtrl: AlertController, public router: Router, private oauthService: OAuthService, private http: HttpClient) { }
 
   getDateAsYMD(somedate: Date) {
     let dateformat = 'yyyy-MM-dd';
@@ -46,8 +53,9 @@ export class DataPage implements OnInit {
       startdate = new Date(enddate.getTime() - (7 * 24 * 60 * 60 * 1000));
     }
     startdateymd = this.getDateAsYMD(startdate);
-    //this.lastStartDate = startdate;
+    this.lastStartDate = startdate;
     console.log("DATA FROM " + startdateymd + " - " + enddateymd);
+ 
 
     let headers = new HttpHeaders()
         .set("Authorization", "Bearer " + this.oauthService.getAccessToken());
@@ -57,12 +65,23 @@ export class DataPage implements OnInit {
         .set("startdateymd", startdateymd.toString())
         .set("enddateymd", enddateymd.toString());
     return this.http.get<any>('https://wbsapi.withings.net/v2/sleep', {headers, params})
-    .subscribe(msg => {this.sleepSummaryObservable = msg.body.series;});
+    .subscribe(msg => { 
+      if (this.WithingsData.length == 0) {
+        console.log("ENTERED IF")
+        this.WithingsData = msg.body.series;
+        this.slider.slideTo(6);
+      } else {
+        console.log("ENTERED ELSE");
+        let seriestmpstorage = msg.body.series;
+        this.WithingsData = [...seriestmpstorage,...this.WithingsData];
+        console.log("Withings Data is");
+        console.log(this.WithingsData);
+        }     
+    });
   }
 
   loadData(event) {
     setTimeout(() => {
-      this.loadmoreitems();
       if (typeof this.lastStartDate === 'undefined' || this.lastStartDate === null) {
         console.log("lastStartDate was not initialized"); this.getWithingsData();
       } else { this.getWithingsData(this.lastStartDate); }
@@ -70,10 +89,37 @@ export class DataPage implements OnInit {
     }, 500);
   }
 
-  loadmoreitems() {
-    for (let i=0; i<10; i++) {
-      this.WithingsData.push(i);
+  sliderPrivEnd() {
+    this.currentobservableindex += 1;
+    this.slider.getActiveIndex().then(
+      (index)=>{
+        this.currentobservableindex = index;
+        console.log("SLIDER INDEX AT" + this.currentobservableindex);
+     });
+  }
+
+  sliderNextEnd() {
+    this.currentobservableindex -= 1;
+    this.slider.getActiveIndex().then(
+      (index)=>{
+        this.currentobservableindex = index;
+        console.log("SLIDER INDEX AT" + this.currentobservableindex);
+     });
+  }
+
+  sliderReachEnd() {
+  }
+
+  sliderReachStart() {
+    this.lastStartDate.setDate(this.lastStartDate.getDate() - 1)
+    this.getWithingsData(this.lastStartDate);
+  }
+
+  ChangeObservableIndexOnSwipingMotion(direction) {
+    if (direction == "left") {
+      this.currentobservableindex += 1;
     }
+    console.log(direction);
   }
 
   async showConfirmAlert() {
