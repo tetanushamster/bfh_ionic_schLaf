@@ -3,7 +3,6 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { environment } from 'src/environments/environment';
 
-
 firebase.initializeApp(environment.firebase);
 // initialize cloud firestore 
 var db = firebase.firestore();
@@ -58,9 +57,10 @@ export class ConfigurationsPage implements OnInit {
 });
 
   }
-  
+ 
 
   ngOnInit() {
+    
   }
 
 }

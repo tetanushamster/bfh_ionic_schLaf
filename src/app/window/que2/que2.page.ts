@@ -19,7 +19,7 @@ const sleep = db.collection("SleepExpert").doc("bettzeit");
 export class Que2Page implements OnInit {
   datum = "  :  ";
   datumBed = "  :  ";
-  gutgeschlafen;
+  gutgeschlafen = "";
   
   constructor() { 
     // get data from DB AND display on new page for user 2 see

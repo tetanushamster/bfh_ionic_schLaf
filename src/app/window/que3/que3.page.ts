@@ -97,14 +97,14 @@ export class Que3Page implements OnInit {
            console.log('Error getting document:', error);
           });
           
-          // tslint:disable-next-line: align
+          
+          // tslint:disable-next-line:align
           sheepSugestion.get().then(doc =>  {
             if (doc.exists) {
               console.log('Sleep Sugestion:', doc.data());
               const data = doc.data();
               this.sugestion = data.hour;
-             //added this in front
-              // tslint:disable-next-line: whitespace
+             
               this.sleepingWindow = parseInt(this.sugestion,10);
                  
               console.log('TIME Desired to wake up' + data.hour);
@@ -130,15 +130,16 @@ export class Que3Page implements OnInit {
     // calculating recomended bedtime
     getRecomandation() {
       //amount of naptime in H
+      //console.log ('Entered getRecomandation, wouldLikeToGoToBed is ' + this.wouldLikeToGoToBedAtInteger);
+      //console.log ('Entered getRecomandation, wouldLikeToWakeUpAt is ' + this.wouldLikeToWakeUpAtInteger);
       if (this.wouldLikeToGoToBedAtInteger > this.wouldLikeToWakeUpAtInteger){
         this.timeInBedSelected = (24 - this.wouldLikeToGoToBedAtInteger) + this.wouldLikeToWakeUpAtInteger;
       //  return this.division;
       //  console.log ('time is reset');
       } else {
         this.timeInBedSelected = this.wouldLikeToWakeUpAtInteger - this.wouldLikeToGoToBedAtInteger;
-        console.log ('time is NO reset');
       }
-       return this.timeInBedSelected;
+      // return this.timeInBedSelected;
        
       
     }
@@ -156,41 +157,38 @@ export class Que3Page implements OnInit {
       return wouldLikeToGoToBedAtIntegerPlusDifference; 
    }
   }
-    getBestTimeToFallAsleep(){ 
-      //parent.document.getElementById("sheepConclusionText")
-      this.getRecomandation(); 
-     // this.sleepingWindow;
+    getBestTimeToFallAsleep(){
+      this.getRecomandation();
       this.difference = this.timeInBedSelected - this.sleepingWindow;
+    //console.log("SW is at : " + this.sleepingWindow);
       switch(true){
         case (this.difference == 0):
           this.timeInBedSelected = this.sleepingWindow;
-          return "Die gewählte Schlafzeit entspricht entspricht ihrem optimalen Schlaffenster. Das Schlafschaf wünscht Ihnen eine erholsame Nacht.";
+          // tslint:disable-next-line: max-line-length
+          return 'Die gewählte Schlafzeit entspricht entspricht ihrem optimalen Schlaffenster. Das Schlafschaf wünscht Ihnen eine erholsame Nacht.';
           break;
         case (this.difference >= 1): 
         //this.timeInBedSelected = this.sleepingWindow - 1;
-        return "Achtung, die gewählte Schlafzeit entspricht nicht ihrem optimalen Schlaffenster."+ 
-         "Mit der aktuellen Auswahl werden Sie voraussichtlich " + this.difference + " Stunde(n) zu lange im Bett verbringen." +
-         "Damit Sie das Schlaffenster treffen, können Sie um " + 
+        return 'Achtung, die gewählte Schlafzeit entspricht nicht ihrem optimalen Schlaffenster.'+ 
+         'Mit der aktuellen Auswahl werden Sie voraussichtlich ' + this.difference + " Stunde(n) zu lange im Bett verbringen." +
+         'Damit Sie das Schlaffenster treffen, können Sie um ' + 
          this.getGoToBedTimestampAfterSleepingWindowCorrection(this.wouldLikeToGoToBedAtInteger,this.difference) 
-         + " Uhr ins Bett gehen.";
+         + ' Uhr ins Bett gehen.';
         
-         break;
+        break;
          case (this.difference <= -1): 
-         return "Achtung, die gewählte Schlafzeit entspricht nicht ihrem optimalen Schlaffenster."+ 
-         "Mit der aktuellen Auswahl werden Sie voraussichtlich " + Math.abs(this.difference) + " Stunde(n) zu wenig im Bett verbringen." +
-         "Damit Sie das Schlaffenster treffen, können Sie um " +
+         return 'Achtung, die gewählte Schlafzeit entspricht nicht ihrem optimalen Schlaffenster.'+ 
+         'Mit der aktuellen Auswahl werden Sie voraussichtlich ' + Math.abs(this.difference) + " Stunde(n) zu wenig im Bett verbringen." +
+         'Damit Sie das Schlaffenster treffen, können Sie um ' +
          this.getGoToBedTimestampAfterSleepingWindowCorrection(this.wouldLikeToGoToBedAtInteger,this.difference) 
-         + " Uhr ins Bett gehen.";
+         + ' Uhr ins Bett gehen.';
           break;
           case (this.difference == 0): 
          this.timeInBedSelected >= this.sleepingWindow - 3;
-         return "Die erwünste schlaffzeit entspricht nicht eure von Artzt gegebene Schlaffenster." 
+         return 'Die erwünste schlaffzeit entspricht nicht eure von Artzt gegebene Schlaffenster.' 
           + "Bitte gehen Sie ins Bett" + this.timeInBedSelected + "Stunde später"; 
           break;
       }
-      
-      
-       
     }
     dateChanged() {
       
