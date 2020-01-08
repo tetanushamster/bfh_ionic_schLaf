@@ -52,6 +52,7 @@ const routes: Routes = [
   },
   {
     path: 'withings',
+
     loadChildren: () => import('./withings/withings.module').
     then( m => m.WithingsPageModule)
   }, {
