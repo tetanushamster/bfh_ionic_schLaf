@@ -19,7 +19,21 @@ export class QuestionsPage implements OnInit {
   }
 
 data: string;
-  logForm(form: { a1: String; a2: any; a3: any; a4: any; a5: any; a6: any; a7: any; a8: any; a9: any; a10: any; a11: any; a12: any; a13: any; a14a: any; a14b: any; a14c: any; a14d: any; a14e: any; }) {  
+  logForm(form) {  
+    if (!form.a1) {form.a1=1;}
+    if (!form.a2) {form.a2=1;}
+    if (!form.a3) {form.a3=1;}
+    if (!form.a4) {form.a4="nicht ausgefüllt";}
+    if (!form.a5) {form.a5="nicht ausgefüllt";}
+    if (!form.a6) {form.a6="nicht ausgefüllt";}
+    if (!form.a7) {form.a7="nicht ausgefüllt";}
+    if (!form.a8) {form.a8="nicht ausgefüllt";}
+    if (!form.a9) {form.a9="nicht ausgefüllt";}
+    if (!form.a10) {form.a10="nicht ausgefüllt";}
+    if (!form.a11) {form.a11="nicht ausgefüllt";}
+    if (!form.a12) {form.a12="nicht ausgefüllt";}
+    if (!form.a13) {form.a13="nicht ausgefüllt";}
+    if (!form.a14a) {form.a14b="-";form.a14c="-";form.a14d="-";}
     return new Promise<any>((resolve, reject) =>{
     this.firestore
           .collection("protocol")
@@ -31,7 +45,7 @@ data: string;
             q13: form.a13, q14a: form.a14a, q14b: form.a14b, 
             q14c: form.a14c, q14d: form.a14d, 
             user: 'dummy', time: this.now})
-          .then(res => {this.router.navigateByUrl('/protocol')}, err => reject(err));
+          .then(res => {this.router.navigateByUrl('/protocol')}, err => {this.router.navigateByUrl('/protocol')});
         });
         
   }

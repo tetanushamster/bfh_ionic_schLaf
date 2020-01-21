@@ -21,11 +21,18 @@ export class QuestionspmPage implements OnInit {
 
 
   logForm(form) { 
+    if (!form.a1) {form.a1=1;}
+    if (!form.a2) {form.a2=1;}
+    if (!form.a3) {form.a3=1;}
+    if (!form.a4) {form.a4="nicht ausgefüllt";}
+    if (!form.a5) {form.a5="nicht ausgefüllt";}
+    if (!form.a6) {form.a6=1;}
+    if (!form.a7) {form.a7="nicht ausgefüllt";}
     return new Promise<String>((resolve, reject) =>{
     this.firestore
           .collection("protocolpm")
           .add({q1: form.a1, q2: form.a2, q3: form.a3, q4: form.a4, q5: form.a5, q6: form.a6, q7: form.a7, user: 'dummy', time: this.now})
-          .then(res => {this.router.navigateByUrl('/protocol')}, err => reject(err));
+          .then(res => {this.router.navigateByUrl('/protocol')}, err => {this.router.navigateByUrl('/protocol')});
         });
         
   }
