@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="protocol"></ion-back-button>
     </ion-buttons>
     <ion-title>
       SleepExpert
@@ -37,25 +37,7 @@
       <ion-datetime *ngIf="question.set && question.answer == '11'" placeholder="Uhrzeit" display-format="HH:mm" picker-format="HH:mm" done-text="Weiter" cancel-text="Abbrechen" [(ngModel)]="form.a11" name="a11" required=true></ion-datetime>
       <ion-input *ngIf="question.set && question.answer == '12'" class="timeinput" type="number"  placeholder="0.00h" [(ngModel)]="form.a12" name="a12" required=true></ion-input>
       <ion-input *ngIf="question.set && question.answer == '13'" class="timeinput" type="number"  placeholder="0.00h" [(ngModel)]="form.a13" name="a13" required=true></ion-input>
-      <!--<ion-radio-group *ngIf="question.set && question.answer == '14'" [(ngModel)]="form.a14a" name="a14a" required=true>
-          <ion-label float-right> Nein </ion-label>
-            <ion-radio slot="start" value=false color="primary" float-right></ion-radio>
-            <ion-label float-right> Ja </ion-label>
-            <ion-radio slot="start" value=true color="primary" float-right></ion-radio>
-          </ion-radio-group>
-          <ion-radio-group *ngIf="question.set && question.answer == '14'" [(ngModel)]="form.a14b" name="a14b" required=true>
-              <ion-label float-right> vor zu Bettgehen </ion-label>
-                <ion-radio slot="start" value='vor zu Bettgehen' color="primary" float-right></ion-radio>
-                <ion-label float-right> in der Nacht </ion-label>
-                <ion-radio slot="start" value='in der Nacht' color="primary" float-right></ion-radio>
-              </ion-radio-group>
-          <ion-input *ngIf="question.set && question.answer == '14'" class="qinput" placeholder="z.B. Temesta" [(ngModel)]="form.a14c" name="a14c" required=true></ion-input>
-          <ion-input *ngIf="question.set && question.answer == '14'" class="qinput" type="number" placeholder="z.B. 1" [(ngModel)]="form.a14d" name="a14d" required=true></ion-input>
-          <ion-select *ngIf="question.set && question.answer == '14'" class="qinput" placeholder="Dosierung" cancelText="Abbrechen" okText="Weiter" [(ngModel)]="form.a14e" name="a14e" required=true>
-          <ion-select-option value="stk">Stück</ion-select-option>
-            <ion-select-option value="mg">mg</ion-select-option>
-            <ion-select-option value="ml">ml</ion-select-option>
-          </ion-select>-->
+  
       
       <ion-radio-group *ngIf="question.set && question.answer == '14'" [(ngModel)]="form.a14a" name="a14a">
         
