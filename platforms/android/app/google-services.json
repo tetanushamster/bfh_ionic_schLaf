@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1029591900715",
+    "firebase_url": "https://bfhionicschlaf.firebaseio.com",
+    "project_id": "bfhionicschlaf",
+    "storage_bucket": "bfhionicschlaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029591900715:android:a3587a041fcb45f349806e",
+        "android_client_info": {
+          "package_name": "bfh_ionic.schLaf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029591900715-spjquho18ah92ahf72u6paj3kbudnfen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKOgKRfb5LhTfRGrVnZ2rhOeFFhyhh8FU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029591900715-spjquho18ah92ahf72u6paj3kbudnfen.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1029591900715-7vodafkjjj3vpgnb9pkvd1dr3rji5unq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.ionic.starter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
